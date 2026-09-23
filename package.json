@@ -1,0 +1,22 @@
+{
+  "name": "dojo-portfolio",
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:backend": "npm run dev -w @dojo-portfolio/backend",
+    "dev:frontend": "npm run dev -w @dojo-portfolio/frontend",
+    "watch:shared": "npm run watch -w @dojo-portfolio/shared",
+    "db:seed": "npm run db:seed -w @dojo-portfolio/backend",
+    "build:backend": "npm run build -w @dojo-portfolio/backend",
+    "build:frontend": "npm run build -w @dojo-portfolio/frontend",
+    "build:shared": "npm run build -w @dojo-portfolio/shared",
+    "build": "npm run build --workspaces"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
