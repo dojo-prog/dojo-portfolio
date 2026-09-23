@@ -1,9 +1,12 @@
 import http from "http";
 import { app } from "./app";
 import { ENV } from "./config/env";
+import { testDBConnection } from "./database/test";
 
 const startServer = async () => {
   try {
+    await testDBConnection();
+
     const server = http.createServer(app);
 
     server.on("error", (error) => {
