@@ -1,4 +1,4 @@
-import { ENV } from "../config/env";
+import { ENV } from "../../config/env";
 import { pool } from "./db";
 
 export const testDBConnection = async () => {

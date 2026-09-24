@@ -1,8 +1,8 @@
 import http from "http";
 import { app } from "./app";
 import { ENV } from "./config/env";
-import { testDBConnection } from "./database/test";
-import "./database/init";
+import { testDBConnection } from "./infrastructure/database/test";
+import "./infrastructure/database/init";
 
 const startServer = async () => {
   try {
