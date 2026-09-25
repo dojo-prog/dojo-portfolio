@@ -7,11 +7,13 @@
   ],
   "scripts": {
     "dev:backend": "npm run dev -w @dojo-portfolio/backend",
-    "dev:frontend": "npm run dev -w @dojo-portfolio/frontend",
+    "dev:web": "npm run dev -w @dojo-portfolio/web",
+    "dev:admin": "npm run dev -w @dojo-portfolio/admin",
     "watch:shared": "npm run watch -w @dojo-portfolio/shared",
     "db:seed": "npm run db:seed -w @dojo-portfolio/backend",
     "build:backend": "npm run build -w @dojo-portfolio/backend",
-    "build:frontend": "npm run build -w @dojo-portfolio/frontend",
+    "build:web": "npm run build -w @dojo-portfolio/web",
+    "build:admin": "npm run build -w @dojo-portfolio/admin",
     "build:shared": "npm run build -w @dojo-portfolio/shared",
     "build": "npm run build --workspaces"
   },
