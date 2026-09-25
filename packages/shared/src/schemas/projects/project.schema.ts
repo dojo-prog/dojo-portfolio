@@ -10,6 +10,7 @@ import {
   UrlSchema,
   UUIDSchema,
 } from "../common";
+import { SkillEntitySchema } from "../skills";
 
 // =======================================
 // REUSABLE FIELDS
@@ -63,6 +64,10 @@ export const ProjectEntitySchema = z.object({
   updated_at: IsoDatetimeSchema,
 });
 
+export const ProjectWithRelationsSchema = ProjectEntitySchema.extend({
+  project_skills: z.array(SkillEntitySchema.omit({ created_at: true })),
+});
+
 // =======================================
 // TYPES
 // =======================================
@@ -70,3 +75,5 @@ export const ProjectEntitySchema = z.object({
 export type ProjectStatus = z.infer<typeof ProjectStatusSchema>;
 
 export type Project = z.infer<typeof ProjectEntitySchema>;
+
+export type ProjectWithRelations = z.infer<typeof ProjectWithRelationsSchema>;

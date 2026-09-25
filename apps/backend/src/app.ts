@@ -6,6 +6,7 @@ import { errorMiddleware } from "./middlewares/error.middleware";
 import { globalRateLimiter } from "./infrastructure/rate-limit/global-rate-limiter";
 
 import authRouter from "./modules/auth/auth.routes";
+import projectRouter from "./modules/projects/project.routes";
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(globalRateLimiter);
 
 // Routers
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/projects", projectRouter);
 
 // Error Handler
 app.use(errorMiddleware);

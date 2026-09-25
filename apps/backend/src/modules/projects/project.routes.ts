@@ -15,6 +15,7 @@ import {
   getProjects,
   updateProject,
 } from "./project.controller";
+import { multerUpload } from "../../middlewares/multer.middleware";
 
 const router = express.Router();
 
@@ -24,6 +25,7 @@ router
   .post(
     protectRoute,
     projectWriteLimiter,
+    multerUpload.single("thumbnail"),
     validate({ body: CreateProjectBodySchema }),
     createProject,
   );
@@ -34,6 +36,7 @@ router
   .patch(
     protectRoute,
     projectWriteLimiter,
+    multerUpload.single("thumbnail"),
     validate({ params: ProjectIdParamsSchema, body: UpdateProjectBodySchema }),
     updateProject,
   )
