@@ -32,7 +32,7 @@ export const buildFilterQueryParts = ({
 
   const clauses = {
     whereClause: "",
-    orderByClause: "",
+    orderByClause: "ORDER BY created_at IS NULL, created_at DESC",
     limitClause: "",
     offsetClause: "",
   };
