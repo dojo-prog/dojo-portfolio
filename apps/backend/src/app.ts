@@ -7,6 +7,7 @@ import { globalRateLimiter } from "./infrastructure/rate-limit/global-rate-limit
 
 import authRouter from "./modules/auth/auth.routes";
 import projectRouter from "./modules/projects/project.routes";
+import skillRouter from "./modules/skills/skill.routes";
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(globalRateLimiter);
 // Routers
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/projects", projectRouter);
+app.use("/api/v1/skills", skillRouter);
 
 // Error Handler
 app.use(errorMiddleware);
