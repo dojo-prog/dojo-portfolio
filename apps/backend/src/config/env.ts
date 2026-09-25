@@ -43,6 +43,7 @@ const ENV = {
   PORT: getReqEnvNum("PORT"),
   BASE_URL: getReqEnv("BASE_URL"),
   CLIENT_URL: getReqEnv("CLIENT_URL"),
+  ADMIN_CLIENT_URL: getReqEnv("ADMIN_CLIENT_URL"),
 
   DATABASE_HOST: getReqEnv("DATABASE_HOST"),
   DATABASE_PORT: getReqEnvNum("DATABASE_PORT"),
