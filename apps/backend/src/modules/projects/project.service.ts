@@ -3,6 +3,7 @@ import {
   CreateProjectParams,
   GetProjectResult,
   UpdateProjectParams,
+  UpdateProjectSkillsParams,
 } from "./project.types";
 import { calculateTotalPages } from "../../utils/calculateTotalPages";
 import { AppError } from "../../utils/errors/AppError";
@@ -109,4 +110,12 @@ export const deleteProject = async (
   await projectRepository.remove(projectId);
 
   return project;
+};
+
+export const updateProjectSkills = async (
+  params: UpdateProjectSkillsParams,
+): Promise<ProjectWithRelations> => {
+  const { projectId, skillIds } = params;
+
+  return projectRepository.updateSkills(projectId, skillIds);
 };

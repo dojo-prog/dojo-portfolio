@@ -1,21 +1,25 @@
 import express from "express";
 import { protectRoute } from "../../middlewares/auth.middleware";
 import { validate } from "../../middlewares/validation.middleware";
+import { projectWriteLimiter } from "./project.rate-limiter";
+import { multerUpload } from "../../middlewares/multer.middleware";
+
 import {
   CreateProjectBodySchema,
   ProjectIdParamsSchema,
   ProjectQuerySchema,
   UpdateProjectBodySchema,
+  UpdateProjectSkillsBodySchema,
 } from "@dojo-portfolio/shared";
-import { projectWriteLimiter } from "./project.rate-limiter";
+
 import {
   createProject,
   deleteProject,
   getProjectById,
   getProjects,
   updateProject,
+  updateProjectSkills,
 } from "./project.controller";
-import { multerUpload } from "../../middlewares/multer.middleware";
 
 const router = express.Router();
 
@@ -46,5 +50,15 @@ router
     validate({ params: ProjectIdParamsSchema }),
     deleteProject,
   );
+
+router.route("/:projectId/skills").put(
+  protectRoute,
+  projectWriteLimiter,
+  validate({
+    params: ProjectIdParamsSchema,
+    body: UpdateProjectSkillsBodySchema,
+  }),
+  updateProjectSkills,
+);
 
 export default router;

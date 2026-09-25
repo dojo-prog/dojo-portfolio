@@ -127,3 +127,41 @@ export const remove = async (projectId: string): Promise<void> => {
     [projectId],
   );
 };
+
+export const updateSkills = async (
+  projectId: string,
+  skillIds: string[],
+): Promise<ProjectWithRelations> => {
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    await client.query(
+      `
+      DELETE FROM project_skill 
+      WHERE project_id = $1
+      `,
+      [projectId],
+    );
+
+    if (skillIds.length > 0) {
+      await client.query(
+        `
+        INSERT INTO project_skills 
+        SELECT $1, unnest($2::uuid[])
+        `,
+        [projectId, skillIds],
+      );
+    }
+
+    await client.query("COMMIT");
+
+    return findWithRelationsById(projectId);
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  } finally {
+    client.release();
+  }
+};

@@ -65,6 +65,10 @@ export const CreateProjectBodySchema = BaseProjectBodySchema;
 
 export const UpdateProjectBodySchema = BaseProjectBodySchema;
 
+export const UpdateProjectSkillsBodySchema = z.object({
+  skillIds: z.array(UUIDSchema),
+});
+
 // =======================================
 // TYPES
 // =======================================
@@ -75,6 +79,12 @@ export type ProjectQuery = z.infer<typeof ProjectQuerySchema>;
 
 export type CreateProjectBody = z.infer<typeof CreateProjectBodySchema>;
 export type UpdateProjectBody = z.infer<typeof UpdateProjectBodySchema>;
+export type UpdateProjectSkillsBody = z.infer<
+  typeof UpdateProjectSkillsBodySchema
+>;
 
 export type CreateProjectInput = z.input<typeof CreateProjectBodySchema>;
 export type UpdateProjectInput = z.input<typeof UpdateProjectBodySchema>;
+export type UpdateProjectSkillsInput = z.input<
+  typeof UpdateProjectSkillsBodySchema
+>;

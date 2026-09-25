@@ -26,6 +26,11 @@ export type UpdateProjectParams = {
   payload: PayloadWithThumbnail<UpdateProjectBody>;
 };
 
+export type UpdateProjectSkillsParams = {
+  projectId: string;
+  skillIds: string[];
+};
+
 // =======================================
 // RESULT
 // =======================================
