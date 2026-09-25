@@ -7,7 +7,7 @@ import {
   ProjectQuerySchema,
   UpdateProjectBodySchema,
 } from "@dojo-portfolio/shared";
-import { projectWriteLimiter } from "./project.limit";
+import { projectWriteLimiter } from "./project.rate-limiter";
 import {
   createProject,
   deleteProject,
