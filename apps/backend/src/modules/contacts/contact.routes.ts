@@ -14,6 +14,7 @@ import {
   deleteContactMessage,
   getContactMessageById,
   getContactMessages,
+  readContactMessage,
 } from "./contact.controller";
 
 const router = express.Router();
@@ -42,6 +43,11 @@ router
     protectRoute,
     validate({ params: ContactMessageIdParamsSchema }),
     deleteContactMessage,
+  )
+  .patch(
+    protectRoute,
+    validate({ params: ContactMessageIdParamsSchema }),
+    readContactMessage,
   );
 
 export default router;
