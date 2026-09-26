@@ -8,7 +8,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 import SkillsPage from "./pages/SkillsPage";
 import ExperiencesPage from "./pages/ExperiencesPage";
 import EducationPage from "./pages/EducationPage";
-import ContactMessagesPage from "./pages/COntactMessagesPage";
+import ContactMessagesPage from "./pages/ContactMessagesPage";
 
 const App = () => {
   return (
