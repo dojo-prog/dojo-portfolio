@@ -8,7 +8,7 @@ import * as contactService from "./contact.service";
 
 export const getContactMessages: Controller = async (req, res, next) => {
   try {
-    const data = contactService.getContactMessages(
+    const data = await contactService.getContactMessages(
       ContactMessageQuerySchema.parse(req.query),
     );
 
@@ -20,7 +20,7 @@ export const getContactMessages: Controller = async (req, res, next) => {
 
 export const getContactMessageById: Controller = async (req, res, next) => {
   try {
-    const message = contactService.getContactMessageById(
+    const message = await contactService.getContactMessageById(
       req.params.contactMessageId as string,
     );
 
@@ -42,7 +42,7 @@ export const getUnreadMessagesCount: Controller = async (req, res, next) => {
 
 export const createContactMessage: Controller = async (req, res, next) => {
   try {
-    const message = contactService.createContactMessage(
+    const message = await contactService.createContactMessage(
       req.body as CreateContactMessageBody,
     );
 
@@ -54,7 +54,7 @@ export const createContactMessage: Controller = async (req, res, next) => {
 
 export const deleteContactMessage: Controller = async (req, res, next) => {
   try {
-    const message = contactService.deleteContactMessage(
+    const message = await contactService.deleteContactMessage(
       req.params.contactMessageId as string,
     );
 
@@ -66,7 +66,7 @@ export const deleteContactMessage: Controller = async (req, res, next) => {
 
 export const readContactMessage: Controller = async (req, res, next) => {
   try {
-    const message = contactService.readContactMessage(
+    const message = await contactService.readContactMessage(
       req.params.contactMessageId as string,
     );
 
