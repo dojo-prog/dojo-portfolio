@@ -4,6 +4,7 @@ import type {
   CreateProjectBody,
   ProjectQuery,
   UpdateProjectBody,
+  UpdateProjectSkillsBody,
 } from "@dojo-portfolio/shared";
 
 import type {
@@ -12,6 +13,7 @@ import type {
   FetchProjectRes,
   FetchProjectsRes,
   UpdateProjectRes,
+  UpdateProjectSkillsRes,
 } from "../types/project.types";
 
 export const fetchProjects = async (params: ProjectQuery) => {
@@ -47,6 +49,18 @@ export const updateProject = async (
 export const deleteProject = async (projectId: string) => {
   const { data } = await api.delete<DeleteProjectRes>(
     `/v1/projects/${projectId}`,
+  );
+
+  return data;
+};
+
+export const updateProjectSkills = async (
+  projectId: string,
+  body: UpdateProjectSkillsBody,
+) => {
+  const { data } = await api.put<UpdateProjectSkillsRes>(
+    `/v1/projects/${projectId}`,
+    body,
   );
 
   return data;

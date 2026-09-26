@@ -15,6 +15,8 @@ export type UpdateProjectRes = ApiResponse<BaseProjectData>;
 
 export type DeleteProjectRes = ApiResponse<BaseProjectData>;
 
+export type UpdateProjectSkillsRes = ApiResponse<BaseProjectData>;
+
 // =======================================
 // RESPONSE DATA SHAPE
 // =======================================
