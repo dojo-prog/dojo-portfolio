@@ -3,11 +3,11 @@ import { deleteSkill } from "../api/skill.api";
 import { toast } from "sonner";
 import { handleApiError } from "@/utils/errors/handleApiError";
 
-export const useDeleteSkill = (skillId: string) => {
+export const useDeleteSkill = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => deleteSkill(skillId),
+    mutationFn: deleteSkill,
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["skills"] });
