@@ -3,7 +3,7 @@ import { fetchSkill } from "../api/skill.api";
 
 export const useSkill = (skillId: string) => {
   return useQuery({
-    queryKey: ["skill", skillId],
+    queryKey: ["skills", skillId],
     queryFn: () => fetchSkill(skillId),
   });
 };
