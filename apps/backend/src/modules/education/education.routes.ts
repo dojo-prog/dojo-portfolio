@@ -7,6 +7,7 @@ import {
   CreateEducationBodySchema,
   EducationIdParamsSchema,
   EducationQuerySchema,
+  UpdateEducationBodySchema,
 } from "@dojo-portfolio/shared";
 
 import {
@@ -35,7 +36,10 @@ router
   .patch(
     protectRoute,
     educationWriteLimiter,
-    validate({ params: EducationIdParamsSchema }),
+    validate({
+      params: EducationIdParamsSchema,
+      body: UpdateEducationBodySchema,
+    }),
     updateEducation,
   )
   .delete(
