@@ -1,0 +1,24 @@
+import type { ProjectQuery } from "@dojo-portfolio/shared";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { fetchProjects } from "../api/project.api";
+
+export const useProjects = (params: ProjectQuery) => {
+  return useInfiniteQuery({
+    queryKey: ["projects", params],
+    queryFn: ({ pageParam }) => fetchProjects({ ...params, page: pageParam }),
+
+    initialPageParam: 1,
+
+    getNextPageParam: (lastPage) => {
+      const pagination = lastPage.data?.pagination;
+
+      if (!pagination) return undefined;
+
+      const { page, total_pages } = pagination;
+
+      if (page >= total_pages) return undefined;
+
+      return page + 1;
+    },
+  });
+};
