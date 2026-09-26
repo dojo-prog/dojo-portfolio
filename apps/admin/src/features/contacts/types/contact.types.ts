@@ -9,6 +9,8 @@ export type FetchContactMessagesRes = ApiResponse<FetchContactMessagesData>;
 
 export type FetchContactMessageRes = ApiResponse<BaseContactMessageData>;
 
+export type FetchUnreadMessageCountRes = ApiResponse<{ unread_count: number }>;
+
 export type DeleteContactMessageRes = ApiResponse<BaseContactMessageData>;
 
 export type ReadContactMessageRes = ApiResponse<BaseContactMessageData>;

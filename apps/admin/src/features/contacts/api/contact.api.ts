@@ -4,6 +4,7 @@ import type {
   DeleteContactMessageRes,
   FetchContactMessageRes,
   FetchContactMessagesRes,
+  FetchUnreadMessageCountRes,
   ReadContactMessageRes,
 } from "../types/contact.types";
 
@@ -19,6 +20,14 @@ export const fetchContactMessages = async (params: ContactMessageQuery) => {
 export const fetchContactMessage = async (contactMessageId: string) => {
   const { data } = await api.get<FetchContactMessageRes>(
     `/v1/contacts/messages/${contactMessageId}`,
+  );
+
+  return data;
+};
+
+export const fetchUnreadMessagesCount = async () => {
+  const { data } = await api.get<FetchUnreadMessageCountRes>(
+    `/v1/contacts/messages/unread/count`,
   );
 
   return data;
