@@ -20,7 +20,7 @@ import {
 const router = express.Router();
 
 router
-  .route("/")
+  .route("/messages")
   .get(
     protectRoute,
     validate({ query: ContactMessageQuerySchema }),
@@ -33,7 +33,7 @@ router
   );
 
 router
-  .route("/:contactMessageId")
+  .route("/messages/:contactMessageId")
   .get(
     protectRoute,
     validate({ params: ContactMessageIdParamsSchema }),
