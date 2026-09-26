@@ -30,6 +30,16 @@ export const getContactMessageById: Controller = async (req, res, next) => {
   }
 };
 
+export const getUnreadMessagesCount: Controller = async (req, res, next) => {
+  try {
+    const unread_count = await contactService.getUnreadMessagesCount();
+
+    res.status(200).json({ success: true, data: { unread_count } });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const createContactMessage: Controller = async (req, res, next) => {
   try {
     const message = contactService.createContactMessage(

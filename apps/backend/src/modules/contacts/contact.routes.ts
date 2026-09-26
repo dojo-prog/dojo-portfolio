@@ -14,6 +14,7 @@ import {
   deleteContactMessage,
   getContactMessageById,
   getContactMessages,
+  getUnreadMessagesCount,
   readContactMessage,
 } from "./contact.controller";
 
@@ -31,6 +32,8 @@ router
     validate({ body: CreateContactMessageBodySchema }),
     createContactMessage,
   );
+
+router.get("/messages/unread/count", protectRoute, getUnreadMessagesCount);
 
 router
   .route("/messages/:contactMessageId")

@@ -52,6 +52,18 @@ export const findById = async (
   return rows[0];
 };
 
+export const findUnreadCount = async (): Promise<number> => {
+  const { rows } = await pool.query(
+    `
+    SELECT COUNT(*) AS unread_count 
+    FROM contact_messages
+    WHERE read_at IS NULL
+    `,
+  );
+
+  return rows[0]?.unread_count ?? 0;
+};
+
 export const add = async (
   payload: CreateContactMessageBody,
 ): Promise<ContactMessage> => {

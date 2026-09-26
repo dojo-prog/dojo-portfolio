@@ -38,6 +38,10 @@ export const getContactMessageById = async (
   return message;
 };
 
+export const getUnreadMessagesCount = async (): Promise<number> => {
+  return contactRepository.findUnreadCount();
+};
+
 export const createContactMessage = async (
   payload: CreateContactMessageBody,
 ): Promise<ContactMessage> => {
