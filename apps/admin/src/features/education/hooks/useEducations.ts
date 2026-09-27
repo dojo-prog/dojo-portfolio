@@ -2,15 +2,19 @@ import type { EducationQuery } from "@dojo-portfolio/shared";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchEducations } from "../api/education.api";
 
-export const useEducation = (params: EducationQuery) => {
+export const useEducations = (params: EducationQuery) => {
   return useInfiniteQuery({
     queryKey: ["educations", params],
-    queryFn: ({ pageParam }) => fetchEducations({ ...params, page: pageParam }),
+    queryFn: async ({ pageParam }) => {
+      const res = await fetchEducations({ ...params, page: pageParam });
+
+      return res.data;
+    },
 
     initialPageParam: 1,
 
     getNextPageParam: (lastPage) => {
-      const pagination = lastPage.data?.pagination;
+      const pagination = lastPage?.pagination;
 
       if (!pagination) return undefined;
 

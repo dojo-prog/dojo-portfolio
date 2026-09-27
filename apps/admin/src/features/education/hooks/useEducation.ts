@@ -4,6 +4,9 @@ import { fetchEducation } from "../api/education.api";
 export const useEducation = (educationId: string) => {
   return useQuery({
     queryKey: ["educations", educationId],
-    queryFn: () => fetchEducation(educationId),
+    queryFn: async () => {
+      const res = await fetchEducation(educationId);
+      return res.data?.education;
+    },
   });
 };
