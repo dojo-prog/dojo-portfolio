@@ -70,7 +70,7 @@ export const errorMiddleware: ErrorRequestHandler = (err, req, res, next) => {
     }
   }
 
-  if (!isProduction && statusCode >= 500) {
+  if ((statusCode >= 500 && isProduction) || !isProduction) {
     console.error(err);
   }
 
