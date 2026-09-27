@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { IsoDateSchema, UUIDSchema } from "../common";
+import { IsoDateSchema, IsoDatetimeSchema, UUIDSchema } from "../common";
 
 // =======================================
 // REUSABLE FIELDS
@@ -37,6 +37,7 @@ export const EducationEntitySchema = z.object({
   description: EducationDescriptionSchema,
   start_date: IsoDateSchema.nullable(),
   end_date: IsoDateSchema.nullable(),
+  created_at: IsoDatetimeSchema,
 });
 
 // =======================================

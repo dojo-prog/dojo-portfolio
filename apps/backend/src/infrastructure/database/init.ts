@@ -111,7 +111,8 @@ const initDb = async () => {
       field text,
       description text, 
       start_date date,
-      end_date date
+      end_date date,
+      created_at timestamptz NOT NULL DEFAULT now()
     );
 
     CREATE TABLE IF NOT EXISTS contact_messages (
