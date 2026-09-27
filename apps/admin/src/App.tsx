@@ -12,6 +12,7 @@ import ContactMessagesPage from "./pages/ContactMessagesPage";
 import ScrollToTop from "./components/common/ScrollToTop";
 import AddProjectPage from "./pages/AddProjectPage";
 import { useCurrentUser } from "./features/auth/hooks/useCurrentUser";
+import UpdateProjectPage from "./pages/UpdateProjectPage";
 
 const App = () => {
   const { data: user, isPending } = useCurrentUser();
@@ -37,6 +38,11 @@ const App = () => {
           <Route index element={<DashboardPage />} />
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="projects/add" element={<AddProjectPage />} />
+          <Route
+            path="projects/:projectId/edit"
+            element={<UpdateProjectPage />}
+          />
+
           <Route path="skills" element={<SkillsPage />} />
           <Route path="experiences" element={<ExperiencesPage />} />
           <Route path="education" element={<EducationPage />} />
