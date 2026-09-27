@@ -5,13 +5,15 @@ import { fetchExperiences } from "../api/experience.api";
 export const useExperiences = (params: ExperienceQuery) => {
   return useInfiniteQuery({
     queryKey: ["experiences", params],
-    queryFn: ({ pageParam }) =>
-      fetchExperiences({ ...params, page: pageParam }),
+    queryFn: async ({ pageParam }) => {
+      const res = await fetchExperiences({ ...params, page: pageParam });
+      return res.data;
+    },
 
     initialPageParam: 1,
 
     getNextPageParam: (lastPage) => {
-      const pagination = lastPage.data?.pagination;
+      const pagination = lastPage?.pagination;
 
       if (!pagination) return undefined;
 
