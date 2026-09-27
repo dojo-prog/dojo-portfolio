@@ -63,13 +63,18 @@ const initDb = async () => {
 
       CONSTRAINT skill_category_valid
         CHECK (category IN (
+          'language',
           'frontend',
           'backend',
+          'mobile',
+          'desktop',
           'database',
-          'devops',
           'cloud',
-          'language',
+          'devops',
           'testing',
+          'security',
+          'data',
+          'ai',
           'tools',
           'other'
         ))
