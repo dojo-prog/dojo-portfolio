@@ -15,13 +15,18 @@ export const SkillNameSchema = z
 // =======================================
 
 export const SkillCategorySchema = z.enum([
+  "language",
   "frontend",
   "backend",
+  "mobile",
+  "desktop",
   "database",
-  "devops",
   "cloud",
-  "language",
+  "devops",
   "testing",
+  "security",
+  "data",
+  "ai",
   "tools",
   "other",
 ]);
