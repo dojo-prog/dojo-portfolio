@@ -3,6 +3,7 @@ import {
   IsoDateSchema,
   OptionalIsoDateSchema,
   PaginationQuerySchema,
+  ReqIsoDateSchema,
   SearchQuerySchema,
   UUIDSchema,
 } from "../common";
@@ -46,8 +47,8 @@ export const BaseExperienceBodySchema = z.object({
   company: CompanyNameSchema,
   position: PositionSchema,
   description: ExperienceDescriptionSchema,
-  startDate: OptionalIsoDateSchema,
-  endDate: IsoDateSchema.optional(),
+  startDate: ReqIsoDateSchema,
+  endDate: OptionalIsoDateSchema,
   current: z.boolean(),
 });
 
