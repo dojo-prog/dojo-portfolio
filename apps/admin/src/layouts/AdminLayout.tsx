@@ -1,9 +1,25 @@
+import Navbar from "@/components/layout/Navbar";
+import Sidebar from "@/components/layout/Sidebar";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
-    <div>
-      <Outlet />
+    <div className="flex min-h-screen w-full bg-muted/20">
+      <Sidebar
+        collapsed={collapsed}
+        onToggle={() => setCollapsed((prev) => !prev)}
+      />
+
+      <div className="flex min-w-0 flex-1 flex-col">
+        <Navbar />
+
+        <main className="min-w-0 p-6">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };
