@@ -5,6 +5,9 @@ import type { SkillQuery } from "@dojo-portfolio/shared";
 export const useSkills = (params: SkillQuery) => {
   return useQuery({
     queryKey: ["skills", params],
-    queryFn: () => fetchSkills(params),
+    queryFn: async () => {
+      const res = await fetchSkills(params);
+      return res.data?.skills;
+    },
   });
 };
