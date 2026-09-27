@@ -15,7 +15,7 @@ const ExperienceFilters = ({ filters, setFilters }: Props) => {
         <SearchInput
           value={filters.search as string}
           onChange={(value) =>
-            setFilters((prev: Partial<ExperienceQuery>) => ({
+            setFilters((prev) => ({
               ...prev,
               search: value,
               page: 1,
