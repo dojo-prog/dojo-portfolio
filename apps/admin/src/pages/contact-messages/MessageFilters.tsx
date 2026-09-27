@@ -1,4 +1,5 @@
 import SearchInput from "@/components/common/SearchInput";
+import { Button } from "@/components/ui/button";
 import type { ContactMessageQuery } from "@dojo-portfolio/shared";
 import { type Dispatch, type SetStateAction } from "react";
 
@@ -24,6 +25,24 @@ const MessageFilters = ({ filters, setFilters }: Props) => {
           placeholder="Search sender name or email..."
         />
       </div>
+
+      {/* Unread Toggle */}
+      <Button
+        className={`rounded-md border px-4 py-2 text-sm font-medium transition-colors ${
+          filters.unread
+            ? "bg-primary text-white  hover:text-white"
+            : "bg-background text-neutral border border-neutral"
+        }`}
+        onClick={() =>
+          setFilters((prev) => ({
+            ...prev,
+            unread: !prev.unread,
+            page: 1,
+          }))
+        }
+      >
+        Unread
+      </Button>
     </div>
   );
 };
