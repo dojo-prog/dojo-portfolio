@@ -10,7 +10,7 @@ export const useLogout = () => {
     mutationFn: logout,
 
     onSuccess: () => {
-      queryClient.clear();
+      queryClient.setQueryData(["current-user"], null);
 
       toast.success("Logout successful");
     },
