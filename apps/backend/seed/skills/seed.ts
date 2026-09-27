@@ -16,7 +16,7 @@ export const seedSkills = async (client: PoolClient) => {
       [u.name, u.category],
     );
 
-    console.log(`Inserted user w/ email of: ${u.name}  `);
+    console.log(`Inserted skill: ${u.name}  `);
   }
 
   console.log(`\nInserted ${mockSkills.length} skills successfully\n`);
