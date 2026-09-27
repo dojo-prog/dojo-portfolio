@@ -5,6 +5,8 @@ import type {
 } from "@dojo-portfolio/shared";
 import ProjectFilters from "./ProjectFilters";
 import type { Dispatch, SetStateAction } from "react";
+import Empty from "@/components/common/Empty";
+import { useNavigate } from "react-router-dom";
 
 export const dummyProjects: ProjectWithRelations[] = [
   {
@@ -142,17 +144,28 @@ type Props = {
 };
 
 const ProjectList = ({ projects, filters, setFilters }: Props) => {
+  const navigate = useNavigate();
+
   return (
     <main className="space-y-6">
       {/* Filters */}
       <ProjectFilters filters={filters} setFilters={setFilters} />
 
       {/* Projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {projects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
-        ))}
-      </div>
+      {projects.length === 0 ? (
+        <Empty
+          title="No projects found"
+          description="No projects match your current filters, or you haven't added any projects yet. Try adjusting your filters or start by creating your first project."
+          actionLabel="Add Project"
+          onAction={() => navigate("/projects/add")}
+        />
+      ) : (
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      )}
     </main>
   );
 };
