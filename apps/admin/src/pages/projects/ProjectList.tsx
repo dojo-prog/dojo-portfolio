@@ -1,6 +1,10 @@
 import ProjectCard from "@/features/projects/components/ProjectCard";
-import type { ProjectWithRelations } from "@dojo-portfolio/shared";
+import type {
+  ProjectQuery,
+  ProjectWithRelations,
+} from "@dojo-portfolio/shared";
 import ProjectFilters from "./ProjectFilters";
+import type { Dispatch, SetStateAction } from "react";
 
 export const dummyProjects: ProjectWithRelations[] = [
   {
@@ -131,15 +135,21 @@ export const dummyProjects: ProjectWithRelations[] = [
   },
 ];
 
-const ProjectList = () => {
+type Props = {
+  projects: ProjectWithRelations[];
+  filters: ProjectQuery;
+  setFilters: Dispatch<SetStateAction<ProjectQuery>>;
+};
+
+const ProjectList = ({ projects, filters, setFilters }: Props) => {
   return (
     <main className="space-y-6">
       {/* Filters */}
-      <ProjectFilters />
+      <ProjectFilters filters={filters} setFilters={setFilters} />
 
       {/* Projects */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {dummyProjects.map((p) => (
+        {projects.map((p) => (
           <ProjectCard key={p.id} project={p} />
         ))}
       </div>

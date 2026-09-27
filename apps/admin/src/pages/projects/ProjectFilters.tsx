@@ -2,18 +2,14 @@ import SearchInput from "@/components/common/SearchInput";
 import { Button } from "@/components/ui/button";
 import type { ProjectQuery, ProjectStatus } from "@dojo-portfolio/shared";
 import { cn } from "cn";
-import { useState } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 
-const ProjectFilters = () => {
-  const [filters, setFilters] = useState<ProjectQuery>({
-    page: 1,
-    limit: 10,
-    search: "",
-    sort: undefined,
-    featured: undefined,
-    status: undefined,
-  });
+type Props = {
+  filters: ProjectQuery;
+  setFilters: Dispatch<SetStateAction<ProjectQuery>>;
+};
 
+const ProjectFilters = ({ filters, setFilters }: Props) => {
   return (
     <div className="flex flex-wrap items-center gap-4">
       {/* Search Input */}
@@ -21,7 +17,7 @@ const ProjectFilters = () => {
         <SearchInput
           value={filters.search as string}
           onChange={(value) =>
-            setFilters((prev) => ({
+            setFilters((prev: Partial<ProjectQuery>) => ({
               ...prev,
               search: value,
               page: 1,
@@ -39,7 +35,7 @@ const ProjectFilters = () => {
             : "bg-background text-neutral border border-neutral"
         }`}
         onClick={() =>
-          setFilters((prev) => ({
+          setFilters((prev: Partial<ProjectQuery>) => ({
             ...prev,
             featured: prev.featured ? undefined : true,
             page: 1,
@@ -53,7 +49,7 @@ const ProjectFilters = () => {
       <select
         value={filters.status ?? ""}
         onChange={(e) =>
-          setFilters((prev) => ({
+          setFilters((prev: Partial<ProjectQuery>) => ({
             ...prev,
             status: (e.target.value || undefined) as ProjectStatus | undefined,
             page: 1,
