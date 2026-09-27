@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import AddSkillButton from "@/features/skills/components/AddSkillButton";
 
 const Header = () => {
   return (
@@ -11,10 +10,7 @@ const Header = () => {
         </p>
       </div>
 
-      <Button size={"lg"} className={"text-white px-4"}>
-        <Plus className="mr-1 size-5" />
-        Add Skill
-      </Button>
+      <AddSkillButton />
     </header>
   );
 };

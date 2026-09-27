@@ -7,50 +7,44 @@ export const dummySkills: SkillEntity[] = [
   {
     id: "550e8400-e29b-41d4-a716-446655440001",
     name: "TypeScript",
-    category: "Language",
+    category: "language",
     created_at: "2026-01-10T10:00:00.000Z",
   },
   {
     id: "550e8400-e29b-41d4-a716-446655440002",
     name: "JavaScript",
-    category: "Language",
+    category: "language",
     created_at: "2026-01-11T10:00:00.000Z",
   },
   {
     id: "550e8400-e29b-41d4-a716-446655440003",
     name: "React",
-    category: "Frontend",
+    category: "frontend",
     created_at: "2026-01-12T10:00:00.000Z",
   },
   {
     id: "550e8400-e29b-41d4-a716-446655440004",
     name: "Node.js",
-    category: "Backend",
+    category: "backend",
     created_at: "2026-01-13T10:00:00.000Z",
   },
   {
     id: "550e8400-e29b-41d4-a716-446655440005",
     name: "Express",
-    category: "Backend",
+    category: "backend",
     created_at: "2026-01-14T10:00:00.000Z",
   },
   {
     id: "550e8400-e29b-41d4-a716-446655440006",
     name: "PostgreSQL",
-    category: "Database",
+    category: "database",
     created_at: "2026-01-15T10:00:00.000Z",
   },
   {
     id: "550e8400-e29b-41d4-a716-446655440007",
     name: "Git",
-    category: "Tools",
+    category: "tools",
     created_at: "2026-01-16T10:00:00.000Z",
-  },
-  {
-    id: "550e8400-e29b-41d4-a716-446655440008",
-    name: "Docker",
-    category: "DevOps",
-    created_at: "2026-01-17T10:00:00.000Z",
   },
 ];
 
