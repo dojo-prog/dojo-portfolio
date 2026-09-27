@@ -7,7 +7,7 @@ type RetryableRequestConfig = InternalAxiosRequestConfig & {
 };
 
 const refreshAccessToken = async () => {
-  await refreshApi.post("/v1/auth/refresh");
+  await refreshApi.post("/v1/auth/refresh-access");
 };
 
 api.interceptors.response.use(
