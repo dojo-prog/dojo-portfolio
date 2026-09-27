@@ -28,8 +28,11 @@ import {
 import { FieldError } from "@/components/ui/field";
 import { useCreateProject } from "@/features/projects/hooks/useCreateProject";
 import { useNavigate } from "react-router-dom";
+import ButtonLoader from "@/components/common/ButtonLoader";
 
 const AddProjectPage = () => {
+  const { mutate: createProject, isPending } = useCreateProject();
+
   const form = useForm({
     resolver: zodResolver(CreateProjectBodySchema),
 
@@ -47,8 +50,6 @@ const AddProjectPage = () => {
       endDate: undefined,
     },
   });
-
-  const { mutate: createProject } = useCreateProject();
 
   const [thumbnail, setThumbnail] = useState<File | undefined>(undefined);
   const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null);
@@ -112,8 +113,10 @@ const AddProjectPage = () => {
           size="lg"
           className="px-4 text-white"
         >
-          <Save className="mr-2 h-4 w-4" />
-          Create Project
+          <ButtonLoader isLoading={isPending}>
+            <Save className="mr-2 h-4 w-4" />
+            Create Project
+          </ButtonLoader>
         </Button>
       </div>
 
@@ -139,6 +142,7 @@ const AddProjectPage = () => {
                   <Input
                     id="title"
                     placeholder="e.g. Dojo Portfolio"
+                    disabled={isPending}
                     {...form.register("title")}
                   />
 
@@ -152,6 +156,7 @@ const AddProjectPage = () => {
                   <Input
                     id="shortDescription"
                     placeholder="A short summary of the project"
+                    disabled={isPending}
                     {...form.register("shortDescription")}
                   />
 
@@ -168,6 +173,7 @@ const AddProjectPage = () => {
                     id="description"
                     placeholder="Describe the project in more detail..."
                     className="min-h-32 resize-y"
+                    disabled={isPending}
                     {...form.register("description")}
                   />
 
@@ -195,6 +201,7 @@ const AddProjectPage = () => {
                     id="problem"
                     placeholder="What problem were you trying to solve?"
                     className="min-h-32 resize-y"
+                    disabled={isPending}
                     {...form.register("problem")}
                   />
 
@@ -209,6 +216,7 @@ const AddProjectPage = () => {
                     id="solution"
                     placeholder="How does your project solve the problem?"
                     className="min-h-32 resize-y"
+                    disabled={isPending}
                     {...form.register("solution")}
                   />
 
@@ -235,7 +243,8 @@ const AddProjectPage = () => {
                   <Input
                     id="githubUrl"
                     placeholder="https://github.com/..."
-                    // {...form.register("githubUrl")}
+                    disabled={isPending}
+                    {...form.register("githubUrl")}
                   />
 
                   <FieldError errors={[form.formState.errors.githubUrl]} />
@@ -248,6 +257,7 @@ const AddProjectPage = () => {
                   <Input
                     id="liveUrl"
                     placeholder="https://..."
+                    disabled={isPending}
                     {...form.register("liveUrl")}
                   />
 
@@ -277,6 +287,7 @@ const AddProjectPage = () => {
                   <Controller
                     control={form.control}
                     name="status"
+                    disabled={isPending}
                     render={({ field }) => (
                       <Select
                         value={field.value}
@@ -315,6 +326,7 @@ const AddProjectPage = () => {
                   <Controller
                     control={form.control}
                     name="featured"
+                    disabled={isPending}
                     render={({ field }) => (
                       <Switch
                         id="featured"
@@ -347,6 +359,7 @@ const AddProjectPage = () => {
                   <Input
                     id="startDate"
                     type="date"
+                    disabled={isPending}
                     {...form.register("startDate")}
                   />
 
@@ -389,6 +402,7 @@ const AddProjectPage = () => {
                   accept="image/*"
                   className="hidden"
                   onChange={handleThumbnailChange}
+                  disabled={isPending}
                 />
 
                 {thumbnailPreview ? (
@@ -405,6 +419,7 @@ const AddProjectPage = () => {
                       size="icon"
                       className="absolute right-2 top-2"
                       onClick={removeThumbnail}
+                      disabled={isPending}
                     >
                       <X className="h-4 w-4" />
                     </Button>
