@@ -1,6 +1,7 @@
 import { z } from "zod";
 import {
   IsoDateSchema,
+  OptionalIsoDateSchema,
   PaginationQuerySchema,
   SearchQuerySchema,
   UUIDSchema,
@@ -45,7 +46,7 @@ export const BaseExperienceBodySchema = z.object({
   company: CompanyNameSchema,
   position: PositionSchema,
   description: ExperienceDescriptionSchema,
-  startDate: IsoDateSchema,
+  startDate: OptionalIsoDateSchema,
   endDate: IsoDateSchema.optional(),
   current: z.boolean(),
 });
