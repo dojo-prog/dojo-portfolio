@@ -68,9 +68,10 @@ export const OptionalGithubUrlSchema = z.preprocess(
   GithubUrlSchema.optional(),
 );
 
-export const OptionalIsoDateSchema = z
-  .union([IsoDateSchema, z.literal("")])
-  .transform((value) => (value === "" ? undefined : value));
+export const OptionalIsoDateSchema = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  IsoDateSchema.optional(),
+);
 
 export const ReqIsoDateSchema = z
   .union([
