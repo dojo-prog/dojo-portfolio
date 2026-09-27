@@ -17,7 +17,7 @@ const ProjectFilters = ({ filters, setFilters }: Props) => {
         <SearchInput
           value={filters.search as string}
           onChange={(value) =>
-            setFilters((prev: Partial<ProjectQuery>) => ({
+            setFilters((prev) => ({
               ...prev,
               search: value,
               page: 1,
@@ -35,7 +35,7 @@ const ProjectFilters = ({ filters, setFilters }: Props) => {
             : "bg-background text-neutral border border-neutral"
         }`}
         onClick={() =>
-          setFilters((prev: Partial<ProjectQuery>) => ({
+          setFilters((prev) => ({
             ...prev,
             featured: prev.featured ? undefined : true,
             page: 1,
@@ -49,7 +49,7 @@ const ProjectFilters = ({ filters, setFilters }: Props) => {
       <select
         value={filters.status ?? ""}
         onChange={(e) =>
-          setFilters((prev: Partial<ProjectQuery>) => ({
+          setFilters((prev) => ({
             ...prev,
             status: (e.target.value || undefined) as ProjectStatus | undefined,
             page: 1,
