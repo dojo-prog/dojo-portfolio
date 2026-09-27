@@ -15,6 +15,6 @@ export const PROJECT_WITH_RELATIONS_PROJECTION = `
         ON ps.skill_id = s.id
       WHERE ps.project_id = p.id 
     ),
-    '[]'::jsonb 
+    '[]'::json
   ) AS project_skills
 `;
