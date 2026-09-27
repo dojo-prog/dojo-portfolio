@@ -4,6 +4,9 @@ import { fetchContactMessage } from "../api/contact.api";
 export const useContactMessage = (contactMessageId: string) => {
   return useQuery({
     queryKey: ["contact-messages", contactMessageId],
-    queryFn: () => fetchContactMessage(contactMessageId),
+    queryFn: async () => {
+      const res = await fetchContactMessage(contactMessageId);
+      return res.data?.message;
+    },
   });
 };

@@ -5,13 +5,15 @@ import { fetchContactMessages } from "../api/contact.api";
 export const useContactMessages = (params: ContactMessageQuery) => {
   return useInfiniteQuery({
     queryKey: ["contact-messages", params],
-    queryFn: ({ pageParam }) =>
-      fetchContactMessages({ ...params, page: pageParam }),
+    queryFn: async ({ pageParam }) => {
+      const res = await fetchContactMessages({ ...params, page: pageParam });
+      return res.data;
+    },
 
     initialPageParam: 1,
 
     getNextPageParam: (lastPage) => {
-      const pagination = lastPage.data?.pagination;
+      const pagination = lastPage?.pagination;
 
       if (!pagination) return undefined;
 
