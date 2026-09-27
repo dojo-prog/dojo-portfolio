@@ -21,9 +21,7 @@ const ExperiencesPage = () => {
     isFetchingNextPage,
   } = useExperiences({ ...filters });
 
-  console.log(hasNextPage);
-
-  const experiences = expData?.pages.flatMap((p) => p?.experiences) ?? [];
+  const experiences = expData?.pages.flatMap((p) => p!.experiences) ?? [];
 
   return (
     <main className="space-y-8">
