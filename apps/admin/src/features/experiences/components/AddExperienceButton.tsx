@@ -25,17 +25,17 @@ const AddExperienceButton = () => {
         render={
           <Button size="lg" className="px-4 text-white">
             <Plus className="mr-1 size-5" />
-            Add Skill
+            Add Experience
           </Button>
         }
       />
 
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Add Skill</DialogTitle>
+          <DialogTitle>Add Experience</DialogTitle>
 
           <DialogDescription>
-            Add a new skill to your portfolio.
+            Add a new experience to your portfolio.
           </DialogDescription>
         </DialogHeader>
 
