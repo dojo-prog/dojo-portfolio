@@ -22,7 +22,9 @@ export const find = async (
 
   const { rows } = await pool.query(
     `
-    SELECT * FROM experience 
+    SELECT *,
+      COUNT(*) OVER()::INT AS total
+    FROM experience
     ${whereClause}
     ${orderByClause}
     ${limitClause}
