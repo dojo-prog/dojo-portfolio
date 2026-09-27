@@ -31,7 +31,7 @@ export const buildSpecificContactMessageFilter = ({
     offsetClause: "",
   };
 
-  const { page, limit, sort, ...rest } = query;
+  const { page, limit, sort, unread, ...rest } = query;
 
   // =======================================
   // WHERE CLAUSE CONSTRUCTION
@@ -47,14 +47,17 @@ export const buildSpecificContactMessageFilter = ({
         .map((sc) => `${sc} ILIKE ${placeholder}`)
         .join(" OR ");
 
-      conditions.push(searchConditions);
+      conditions.push(`(${searchConditions})`);
       values.push(`%${value}%`);
-    } else if (key === "unread") {
-      conditions.push("read_at IS NULL");
     } else {
       conditions.push(`${key} = ${placeholder}`);
       values.push(value);
     }
+  }
+
+  // Unread
+  if (unread) {
+    conditions.push("read_at IS NULL");
   }
 
   if (conditions.length > 0) {
