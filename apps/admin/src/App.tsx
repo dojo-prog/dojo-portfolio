@@ -4,15 +4,18 @@ import { Toaster } from "sonner";
 import LoginPage from "./pages/LoginPage";
 import AdminLayout from "./layouts/AdminLayout";
 import DashboardPage from "./pages/DashboardPage";
-import ProjectsPage from "./pages/ProjectsPage";
+import ProjectsPage from "./pages/projects/ProjectsPage";
 import SkillsPage from "./pages/SkillsPage";
 import ExperiencesPage from "./pages/ExperiencesPage";
 import EducationPage from "./pages/EducationPage";
 import ContactMessagesPage from "./pages/ContactMessagesPage";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 const App = () => {
   return (
     <>
+      <ScrollToTop />
+
       <Routes>
         {/* Auth */}
         <Route path="/auth" element={<LoginPage />} />
