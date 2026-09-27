@@ -1,6 +1,5 @@
 import axios, { type InternalAxiosRequestConfig } from "axios";
 import { api, refreshApi } from "./axios";
-import { toast } from "sonner";
 import { ApiError } from "./ApiError";
 
 type RetryableRequestConfig = InternalAxiosRequestConfig & {
@@ -9,12 +8,6 @@ type RetryableRequestConfig = InternalAxiosRequestConfig & {
 
 const refreshAccessToken = async () => {
   await refreshApi.post("/v1/auth/refresh");
-};
-
-const logout = async () => {
-  await api.post("/v1/auth/logout");
-
-  toast.info("Session expired. You have been logged out.");
 };
 
 api.interceptors.response.use(
@@ -34,9 +27,7 @@ api.interceptors.response.use(
         await refreshAccessToken();
 
         return api(config);
-      } catch (error) {
-        await logout();
-      }
+      } catch (error) {}
     }
 
     const response = error.response;
