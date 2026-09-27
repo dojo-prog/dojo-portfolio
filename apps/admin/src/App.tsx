@@ -4,7 +4,7 @@ import { Toaster } from "sonner";
 import LoginPage from "./pages/LoginPage";
 import AdminLayout from "./layouts/AdminLayout";
 import DashboardPage from "./pages/DashboardPage";
-import ProjectsPage from "./pages/projects/ProjectsPage";
+import ProjectsPage from "./pages/ProjectsPage";
 import SkillsPage from "./pages/SkillsPage";
 import ExperiencesPage from "./pages/ExperiencesPage";
 import EducationPage from "./pages/EducationPage";

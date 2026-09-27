@@ -1,5 +1,5 @@
-import Header from "./Header";
-import ProjectList from "./ProjectList";
+import Header from "./projects/Header";
+import ProjectList from "./projects/ProjectList";
 
 const ProjectsPage = () => {
   return (
