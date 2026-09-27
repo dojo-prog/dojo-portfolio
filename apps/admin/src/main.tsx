@@ -6,6 +6,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/tanstack-query/client.ts";
 
 import "./styles/index.css";
+import "@/lib/axios/interceptor.ts";
 import App from "./App.tsx";
 import { ThemeProvider } from "./app/providers/ThemeProvider.tsx";
 
