@@ -7,7 +7,7 @@ export const AUTH_TOKENS = {
     cookieMaxAge: 15 * 60 * 1000,
   },
   REFRESH_TOKEN: {
-    name: "access_token",
+    name: "refresh_token",
     expiresIn: "1d",
     cookieMaxAge: 24 * 60 * 1000,
   },
