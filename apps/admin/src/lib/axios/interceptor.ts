@@ -1,6 +1,7 @@
 import axios, { type InternalAxiosRequestConfig } from "axios";
 import { api, refreshApi } from "./axios";
 import { toast } from "sonner";
+import { ApiError } from "./ApiError";
 
 type RetryableRequestConfig = InternalAxiosRequestConfig & {
   _retry?: boolean;
@@ -35,9 +36,18 @@ api.interceptors.response.use(
         return api(config);
       } catch (error) {
         await logout();
-
-        return Promise.reject(error);
       }
     }
+
+    const response = error.response;
+
+    return Promise.reject(
+      new ApiError(
+        response?.data?.message ?? "Something went wrong",
+        response?.status,
+        response?.data?.code,
+        response?.data,
+      ),
+    );
   },
 );
