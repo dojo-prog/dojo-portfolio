@@ -7,12 +7,13 @@ import { buildFilterQueryParts } from "../../utils/query-builder/buildFilterQuer
 import { pool } from "../../infrastructure/database/db";
 import { buildInsertQueryParts } from "../../utils/query-builder/buildInsertQueryParts";
 import { objectKeysToSnakeCase } from "../../utils/camelCastToSnakeCase";
+import { buildSpecificContactMessageFilter } from "../../utils/query-builder/buildSpecificContactMessageFilters";
 
 export const find = async (
   query: ContactMessageQuery,
 ): Promise<{ messages: ContactMessage[]; total: number }> => {
   const { whereClause, orderByClause, limitClause, offsetClause, values } =
-    buildFilterQueryParts({
+    buildSpecificContactMessageFilter({
       query,
       searchableColumns: ["name", "email"],
     });
