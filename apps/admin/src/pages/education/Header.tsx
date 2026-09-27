@@ -1,3 +1,5 @@
+import AddEducationButton from "@/features/education/components/AddEducationButton";
+
 const Header = () => {
   return (
     <header className="flex items-center justify-between">
@@ -8,7 +10,7 @@ const Header = () => {
         </p>
       </div>
 
-      {/* <AddExperienceButton /> */}
+      <AddEducationButton />
     </header>
   );
 };

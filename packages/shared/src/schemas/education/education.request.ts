@@ -1,6 +1,7 @@
 import { z } from "zod";
 import {
   IsoDateSchema,
+  OptionalIsoDateSchema,
   PaginationQuerySchema,
   SearchQuerySchema,
   UUIDSchema,
@@ -46,8 +47,8 @@ export const BaseEducationBodySchema = z.object({
   degree: EducationDegreeSchema,
   field: EducationFieldSchema,
   description: EducationDescriptionSchema,
-  startDate: IsoDateSchema.optional(),
-  endDate: IsoDateSchema.optional(),
+  startDate: OptionalIsoDateSchema,
+  endDate: OptionalIsoDateSchema,
 });
 
 export const CreateEducationBodySchema = BaseEducationBodySchema;

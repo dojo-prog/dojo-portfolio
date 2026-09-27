@@ -1,13 +1,8 @@
 import type { EducationEntity } from "@dojo-portfolio/shared";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { formatDate } from "@/utils/formatDate";
-import { GraduationCap, MoreHorizontal, Pencil, Trash2 } from "lucide-react";
+import { GraduationCap } from "lucide-react";
+import UpdateEducationButton from "./UpdateEducationButton";
+import DeleteEducationButton from "./DeleteEducationButton";
 
 type Props = {
   education: EducationEntity;
@@ -57,32 +52,11 @@ const EducationCard = ({ education }: Props) => {
           </div>
 
           {/* Actions */}
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="shrink-0 text-muted-foreground hover:text-foreground"
-                >
-                  <MoreHorizontal className="size-5" />
-                  <span className="sr-only">Education actions</span>
-                </Button>
-              }
-            />
+          <div className="space-x-2">
+            <UpdateEducationButton education={education} />
 
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem>
-                <Pencil className="mr-2 size-4" />
-                Edit
-              </DropdownMenuItem>
-
-              <DropdownMenuItem variant="destructive">
-                <Trash2 className="mr-2 size-4" />
-                Delete
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            <DeleteEducationButton education={education} />
+          </div>
         </div>
 
         {/* Description */}
