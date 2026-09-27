@@ -1,4 +1,5 @@
 import { pool } from "../src/infrastructure/database/db";
+import { seedSkills } from "./skills/seed";
 import { seedUsers } from "./users/seed";
 
 const startSeed = async () => {
@@ -8,6 +9,7 @@ const startSeed = async () => {
     await client.query("BEGIN");
 
     await seedUsers(client);
+    await seedSkills(client);
 
     await client.query("COMMIT");
 
