@@ -14,7 +14,7 @@ export const buildInsertQueryParts = <T extends object>(data: T): Result => {
 
     values.push(value);
     columns.push(key);
-    placeholders.push(`$${values.length + 1}`);
+    placeholders.push(`$${values.length}`);
   }
 
   return {
