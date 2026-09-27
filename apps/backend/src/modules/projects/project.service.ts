@@ -9,6 +9,7 @@ import { calculateTotalPages } from "../../utils/calculateTotalPages";
 import { AppError } from "../../utils/errors/AppError";
 import { uploadMulterImage } from "../../infrastructure/cloudinary/upload";
 import { deleteImage } from "../../infrastructure/cloudinary/delete";
+import { generateSlug } from "../../utils/generateSlug";
 
 import * as projectRepository from "./project.repository";
 
@@ -54,6 +55,8 @@ export const createProject = async (
   params: CreateProjectParams,
 ): Promise<ProjectWithRelations> => {
   const { thumbnail, payload } = params;
+
+  payload.slug = generateSlug(payload.title);
 
   if (thumbnail) {
     const { url, public_id } = await uploadMulterImage(
