@@ -1,7 +1,9 @@
-import { Badge } from "@/components/ui/badge";
-import type { SkillEntity } from "@dojo-portfolio/shared";
+import type { SkillEntity, SkillQuery } from "@dojo-portfolio/shared";
 import Header from "./skills/Header";
 import Empty from "@/components/common/Empty";
+import { useSkills } from "@/features/skills/hooks/useSkills";
+import { useState } from "react";
+import SkillCard from "@/features/skills/components/SkillCard";
 
 export const dummySkills: SkillEntity[] = [
   {
@@ -49,34 +51,31 @@ export const dummySkills: SkillEntity[] = [
 ];
 
 const SkillsPage = () => {
+  const [filters, setFilters] = useState<SkillQuery>({
+    search: "",
+    category: undefined,
+    sort: undefined,
+  });
+
+  const { data } = useSkills({ ...filters });
+
+  const skills = data ?? [];
+
   return (
     <main className="space-y-6">
       {/* Header */}
       <Header />
 
       {/* Skills */}
-      {dummySkills.length === 0 ? (
+      {skills.length === 0 ? (
         <Empty
           title="No skills found"
           description="No skills match your current filters, or you haven't added any skills yet. Try adjusting your filters or start by creating your first skill."
         />
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {dummySkills.map((skill) => (
-            <div
-              key={skill.id}
-              className="rounded-lg border bg-card p-5 shadow-sm"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-medium">{skill.name}</h3>
-
-                  <Badge variant="secondary" className="mt-2 capitalize">
-                    {skill.category}
-                  </Badge>
-                </div>
-              </div>
-            </div>
+          {skills.map((skill) => (
+            <SkillCard key={skill.id} skill={skill} />
           ))}
         </div>
       )}
