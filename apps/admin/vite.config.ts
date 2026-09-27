@@ -7,7 +7,7 @@ import path from "node:path";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    port: 5134,
+    port: 5174,
   },
   optimizeDeps: {
     include: ["@dojo-portfolio/shared"],
