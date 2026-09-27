@@ -14,7 +14,12 @@ const ProjectsPage = () => {
     status: undefined,
   });
 
-  const { data: projectData } = useProjects({ ...filters });
+  const {
+    data: projectData,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useProjects({ ...filters });
 
   console.log(projectData);
 
@@ -27,6 +32,9 @@ const ProjectsPage = () => {
         projects={projects}
         filters={filters}
         setFilters={setFilters}
+        hasNextPage={hasNextPage}
+        isFetchingNextPage={isFetchingNextPage}
+        fetchNextPage={fetchNextPage}
       />
     </div>
   );
