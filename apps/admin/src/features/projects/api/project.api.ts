@@ -28,19 +28,41 @@ export const fetchProject = async (projectId: string) => {
   return data;
 };
 
-export const createProject = async (body: CreateProjectBody) => {
-  const { data } = await api.post<CreateProjectRes>("/v1/projects", body);
+export const createProject = async (
+  body: CreateProjectBody & { thumbnail?: File },
+) => {
+  const formData = new FormData();
+
+  Object.entries(body).forEach(([key, value]) => {
+    if (value instanceof File) {
+      formData.append(key, value);
+    } else if (value !== undefined && value !== null) {
+      formData.append(key, String(value));
+    }
+  });
+
+  const { data } = await api.post<CreateProjectRes>("/v1/projects", formData);
 
   return data;
 };
 
 export const updateProject = async (
   projectId: string,
-  body: UpdateProjectBody,
+  body: UpdateProjectBody & { thumbnail?: File },
 ) => {
+  const formData = new FormData();
+
+  Object.entries(body).forEach(([key, value]) => {
+    if (value instanceof File) {
+      formData.append(key, value);
+    } else if (value !== undefined && value !== null) {
+      formData.append(key, String(value));
+    }
+  });
+
   const { data } = await api.patch<UpdateProjectRes>(
     `/v1/projects/${projectId}`,
-    body,
+    formData,
   );
 
   return data;

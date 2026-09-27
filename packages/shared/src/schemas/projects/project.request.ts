@@ -2,6 +2,9 @@ import { z } from "zod";
 import {
   GithubUrlSchema,
   IsoDateSchema,
+  OptionalGithubUrlSchema,
+  OptionalIsoDateSchema,
+  OptionalUrlSchema,
   PaginationQuerySchema,
   RequiredDescriptionSchema,
   RequiredShortDescriptionSchema,
@@ -53,12 +56,12 @@ export const BaseProjectBodySchema = z.object({
   description: RequiredDescriptionSchema,
   problem: ProjectProblemSolvedSchema.optional(),
   solution: ProjectSolutionExplanationSchema.optional(),
-  githubUrl: GithubUrlSchema.optional(),
-  liveUrl: UrlSchema.optional(),
+  githubUrl: OptionalGithubUrlSchema,
+  liveUrl: OptionalUrlSchema,
   featured: z.coerce.boolean().default(false),
   status: ProjectStatusSchema,
-  startDate: IsoDateSchema.optional(),
-  endDate: IsoDateSchema.optional(),
+  startDate: OptionalIsoDateSchema,
+  endDate: OptionalIsoDateSchema,
 });
 
 export const CreateProjectBodySchema = BaseProjectBodySchema;

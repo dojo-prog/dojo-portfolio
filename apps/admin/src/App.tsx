@@ -10,6 +10,7 @@ import ExperiencesPage from "./pages/ExperiencesPage";
 import EducationPage from "./pages/EducationPage";
 import ContactMessagesPage from "./pages/ContactMessagesPage";
 import ScrollToTop from "./components/common/ScrollToTop";
+import AddProjectPage from "./pages/AddProjectPage";
 
 const App = () => {
   return (
@@ -24,6 +25,8 @@ const App = () => {
         <Route path="/" element={<AdminLayout />}>
           <Route index element={<DashboardPage />} />
           <Route path="projects" element={<ProjectsPage />} />
+          <Route path="projects/add" element={<AddProjectPage />} />
+
           <Route path="skills" element={<SkillsPage />} />
           <Route path="experiences" element={<ExperiencesPage />} />
           <Route path="education" element={<EducationPage />} />

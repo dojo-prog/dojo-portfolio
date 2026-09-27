@@ -57,3 +57,18 @@ export const PaginationQuerySchema = z.object({
 export const SearchQuerySchema = z.string().optional();
 
 export const ImagePublicId = z.string();
+
+export const OptionalUrlSchema = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  UrlSchema.optional(),
+);
+
+export const OptionalGithubUrlSchema = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  GithubUrlSchema.optional(),
+);
+
+export const OptionalIsoDateSchema = z.preprocess(
+  (value) => (value === "" ? undefined : value),
+  IsoDateSchema.optional(),
+);
