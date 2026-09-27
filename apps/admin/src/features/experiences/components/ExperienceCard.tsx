@@ -2,8 +2,9 @@ import type { ExperienceEntity } from "@dojo-portfolio/shared";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import { BriefcaseBusiness, Pencil, Trash2 } from "lucide-react";
+import { BriefcaseBusiness, Trash2 } from "lucide-react";
 import { formatDate } from "@/utils/formatDate";
+import UpdateExperienceButton from "./UpdateExperienceButton";
 
 type Props = {
   experience: ExperienceEntity;
@@ -60,9 +61,7 @@ const ExperienceCard = ({ experience }: Props) => {
 
           {/* Actions */}
           <div className="space-x-2">
-            <Button variant={"ghost"}>
-              <Pencil className=" size-4" />
-            </Button>
+            <UpdateExperienceButton experience={experience} />
 
             <Button variant={"destructive"}>
               <Trash2 className=" size-4" />
