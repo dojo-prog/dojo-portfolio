@@ -34,7 +34,8 @@ export const ContactMessageQuerySchema = z.object({
 
   search: SearchQuerySchema,
   sort: ContactMessageAllowableSortSchema.optional(),
-  unread: z.coerce.boolean(),
+
+  unread: z.enum(["true", "false"]).transform((value) => value === "true"),
 });
 
 // =======================================
