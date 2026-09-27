@@ -10,6 +10,7 @@ import {
   CodeXml,
   MonitorCloud,
   GraduationCap,
+  Mail,
 } from "lucide-react";
 
 import React from "react";
@@ -40,6 +41,11 @@ const sidebarTabs = [
     label: "Education",
     path: "/education",
     Icon: GraduationCap,
+  },
+  {
+    label: "Messages",
+    path: "/contact/messages",
+    Icon: Mail,
   },
 ];
 
