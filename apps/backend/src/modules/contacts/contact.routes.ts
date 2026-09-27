@@ -46,11 +46,13 @@ router
     protectRoute,
     validate({ params: ContactMessageIdParamsSchema }),
     deleteContactMessage,
-  )
-  .patch(
-    protectRoute,
-    validate({ params: ContactMessageIdParamsSchema }),
-    readContactMessage,
   );
+
+router.patch(
+  "/messages/:contactMessageId/read",
+  protectRoute,
+  validate({ params: ContactMessageIdParamsSchema }),
+  readContactMessage,
+);
 
 export default router;

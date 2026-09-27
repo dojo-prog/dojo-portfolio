@@ -42,8 +42,8 @@ export const deleteContactMessage = async (contactMessageId: string) => {
 };
 
 export const readContactMessage = async (contactMessageId: string) => {
-  const { data } = await api.get<ReadContactMessageRes>(
-    `/v1/contacts/messages/${contactMessageId}`,
+  const { data } = await api.patch<ReadContactMessageRes>(
+    `/v1/contacts/messages/${contactMessageId}/read`,
   );
 
   return data;
