@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 import React from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const sidebarTabs = [
   {
@@ -49,15 +49,10 @@ type SidebarProps = {
 };
 
 const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
-  const { mutate: logout } = useLogout();
-  const navigate = useNavigate();
+  const { mutateAsync: logout } = useLogout();
 
-  const handleLogout = () => {
-    logout(undefined, {
-      onSuccess: () => {
-        navigate("/admin/auth");
-      },
-    });
+  const handleLogout = async () => {
+    await logout();
   };
 
   return (

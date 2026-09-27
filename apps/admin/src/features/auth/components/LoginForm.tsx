@@ -18,13 +18,10 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useLogin } from "../hooks/useLogin";
-import { useNavigate } from "react-router-dom";
 import { LoginBodySchema, type LoginBody } from "@dojo-portfolio/shared";
 import ButtonLoader from "@/components/common/ButtonLoader";
 
 const LoginForm = () => {
-  const navigate = useNavigate();
-
   const form = useForm({
     resolver: zodResolver(LoginBodySchema),
 
@@ -34,10 +31,10 @@ const LoginForm = () => {
     },
   });
 
-  const { mutateAsync: login, isPending } = useLogin();
+  const { mutate: login, isPending } = useLogin();
 
   const onSubmit = async (data: LoginBody) => {
-    login(data, { onSuccess: () => navigate("/") });
+    login(data);
   };
 
   return (
