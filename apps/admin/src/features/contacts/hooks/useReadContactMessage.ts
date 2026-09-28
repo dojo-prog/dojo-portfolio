@@ -10,6 +10,7 @@ export const useReadContactMessage = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["contact-messages"] });
       queryClient.invalidateQueries({ queryKey: ["unread-messages-count"] });
+      queryClient.invalidateQueries({ queryKey: ["dashboard-overview"] });
     },
   });
 };

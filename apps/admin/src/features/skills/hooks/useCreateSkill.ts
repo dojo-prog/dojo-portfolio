@@ -12,6 +12,8 @@ export const useCreateSkill = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["skills"] });
 
+      queryClient.invalidateQueries({ queryKey: ["dashboard-overview"] });
+
       toast.success("Skill successfully created");
     },
 

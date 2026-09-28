@@ -12,6 +12,8 @@ export const useDeleteExperience = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["experiences"] });
 
+      queryClient.invalidateQueries({ queryKey: ["dashboard-overview"] });
+
       toast.success("Experience successfully deleted");
     },
 

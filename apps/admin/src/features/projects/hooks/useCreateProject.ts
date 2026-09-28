@@ -12,6 +12,8 @@ export const useCreateProject = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["projects"] });
 
+      queryClient.invalidateQueries({ queryKey: ["dashboard-overview"] });
+
       toast.success("Project successfully created");
     },
 
