@@ -4,7 +4,7 @@ const Header = () => {
   const { data: unreadCount } = useUnreadMessagesCount();
 
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-between pt-6">
       <div>
         <div className="flex items-center gap-3">
           <h1 className="text-4xl font-semibold">Contact Messages</h1>

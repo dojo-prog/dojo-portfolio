@@ -2,7 +2,7 @@ import AddEducationButton from "@/features/education/components/AddEducationButt
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-between pt-6">
       <div>
         <h1 className="text-4xl font-semibold">Education</h1>
         <p className="text-xs mt-1">

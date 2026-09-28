@@ -6,7 +6,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-between pt-6">
       <div>
         <h1 className="text-4xl font-semibold">Projects Page</h1>
         <p className="text-xs mt-1">Organize & configure your projects</p>
