@@ -16,8 +16,10 @@ const AdminLayout = () => {
       <div className="flex min-w-0 flex-1 flex-col">
         <Navbar />
 
-        <main className="min-w-0 p-6">
-          <Outlet />
+        <main className="w-full flex-1 p-6">
+          <div className="mx-auto w-full max-w-7xl">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>
