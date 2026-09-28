@@ -19,7 +19,7 @@ export const getOverview = async (): Promise<DashboardOverview> => {
     skillRepository.count(),
     experienceRepository.count(),
     contactMessageRepository.findUnreadCount(),
-    contactMessageRepository.find({ page: 1, limit: 5, unread: false }),
+    contactMessageRepository.find({ page: 1, limit: 6, unread: false }),
   ]);
 
   const { messages } = recent_messages;
