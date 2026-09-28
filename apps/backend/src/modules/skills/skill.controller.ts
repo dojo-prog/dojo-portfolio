@@ -14,6 +14,17 @@ export const getSkills: Controller = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getAllSkills: Controller = async (req, res, next) => {
+  try {
+    const skills = await skillService.getAllSkills();
+
+    res.status(200).json({ success: true, data: { skills } });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getSkillById: Controller = async (req, res, next) => {
   try {
     const skill = await skillService.getSkillById(req.params.skillId as string);
@@ -23,6 +34,7 @@ export const getSkillById: Controller = async (req, res, next) => {
     next(error);
   }
 };
+
 export const createSkill: Controller = async (req, res, next) => {
   try {
     const skill = await skillService.createSkill(req.body as CreateSkillBody);
@@ -32,6 +44,7 @@ export const createSkill: Controller = async (req, res, next) => {
     next(error);
   }
 };
+
 export const deleteSkill: Controller = async (req, res, next) => {
   try {
     const skill = await skillService.deleteSkill(req.params.skillId as string);

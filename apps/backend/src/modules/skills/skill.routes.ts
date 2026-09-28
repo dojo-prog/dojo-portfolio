@@ -10,6 +10,7 @@ import {
 import {
   createSkill,
   deleteSkill,
+  getAllSkills,
   getSkillById,
   getSkills,
 } from "./skill.controller";
@@ -25,6 +26,8 @@ router
     validate({ body: CreateSkillBodySchema }),
     createSkill,
   );
+
+router.get("/all", getAllSkills);
 
 router
   .route("/:skillId")

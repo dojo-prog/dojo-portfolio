@@ -11,6 +11,10 @@ export const getSkills = async (query: SkillQuery): Promise<SkillEntity[]> => {
   return skillRepository.find(query);
 };
 
+export const getAllSkills = async (): Promise<SkillEntity[]> => {
+  return skillRepository.findAll();
+};
+
 export const getSkillById = async (skillId: string): Promise<SkillEntity> => {
   const skill = await skillRepository.findById(skillId);
 

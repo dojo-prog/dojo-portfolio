@@ -34,6 +34,17 @@ export const find = async (query: SkillQuery): Promise<SkillEntity[]> => {
   return rows;
 };
 
+export const findAll = async (): Promise<SkillEntity[]> => {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM skills
+    
+    `,
+  );
+
+  return rows[0];
+};
+
 export const findById = async (skillId: string): Promise<SkillEntity> => {
   const { rows } = await pool.query(
     `
