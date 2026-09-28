@@ -11,6 +11,7 @@ import skillRouter from "./modules/skills/skill.routes";
 import experienceRouter from "./modules/experience/experience.routes";
 import educationRouter from "./modules/education/education.routes";
 import contactRouter from "./modules/contacts/contact.routes";
+import dashboardRouter from "./modules/dashboard/dashboard.routes";
 
 const app = express();
 
@@ -44,6 +45,7 @@ app.use("/api/v1/skills", skillRouter);
 app.use("/api/v1/experience", experienceRouter);
 app.use("/api/v1/education", educationRouter);
 app.use("/api/v1/contacts", contactRouter);
+app.use("/api/v1/dashboard", dashboardRouter);
 
 // Error Handler
 app.use(errorMiddleware);
