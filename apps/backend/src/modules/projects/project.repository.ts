@@ -77,7 +77,7 @@ export const findById = async (projectId: string): Promise<Project> => {
 // =======================================
 
 export const add = async (
-  payload: CreateProjectBody,
+  payload: CreateProjectBody & { slug: string },
 ): Promise<ProjectWithRelations> => {
   const data = objectKeysToSnakeCase(payload);
 

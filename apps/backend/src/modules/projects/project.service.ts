@@ -56,7 +56,7 @@ export const createProject = async (
 ): Promise<ProjectWithRelations> => {
   const { thumbnail, payload } = params;
 
-  payload.slug = generateSlug(payload.title);
+  const slug = generateSlug(payload.title);
 
   if (thumbnail) {
     const { url, public_id } = await uploadMulterImage(
@@ -68,7 +68,7 @@ export const createProject = async (
     payload.thumbnailPublicId = public_id;
   }
 
-  return projectRepository.add(payload);
+  return projectRepository.add({ ...payload, slug });
 };
 
 export const updateProject = async (
