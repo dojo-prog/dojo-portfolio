@@ -2,6 +2,7 @@ import { pool } from "../src/infrastructure/database/db";
 import { seedContactMessages } from "./contact-messages/seed";
 import { seedEducation } from "./education/seed";
 import { seedExperiences } from "./experiences/seed";
+import { seedProjects } from "./projects/seed";
 import { seedSkills } from "./skills/seed";
 import { seedUsers } from "./users/seed";
 
@@ -12,6 +13,7 @@ const startSeed = async () => {
     await client.query("BEGIN");
 
     await seedUsers(client);
+    await seedProjects(client);
     await seedSkills(client);
     await seedExperiences(client);
     await seedEducation(client);
