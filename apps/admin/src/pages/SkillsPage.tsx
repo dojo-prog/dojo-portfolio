@@ -4,6 +4,7 @@ import Empty from "@/components/common/Empty";
 import { useSkills } from "@/features/skills/hooks/useSkills";
 import { useState } from "react";
 import SkillCard from "@/features/skills/components/SkillCard";
+import { useDebounce } from "@/hooks/useDebounce";
 
 export const dummySkills: SkillEntity[] = [
   {
@@ -57,7 +58,9 @@ const SkillsPage = () => {
     sort: undefined,
   });
 
-  const { data } = useSkills({ ...filters });
+  const debouncedSearch = useDebounce(filters.search);
+
+  const { data } = useSkills({ ...filters, search: debouncedSearch });
 
   const skills = data ?? [];
 

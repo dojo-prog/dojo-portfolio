@@ -5,6 +5,7 @@ import Header from "./experiences/Header";
 import ExperienceList from "./experiences/ExperienceList";
 import Empty from "@/components/common/Empty";
 import ExperienceFilters from "./experiences/ExperienceFilters";
+import { useDebounce } from "@/hooks/useDebounce";
 
 const ExperiencesPage = () => {
   const [filters, setFilters] = useState<ExperienceQuery>({
@@ -14,12 +15,14 @@ const ExperiencesPage = () => {
     current: false,
   });
 
+  const debouncedSearch = useDebounce(filters.search);
+
   const {
     data: expData,
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  } = useExperiences({ ...filters });
+  } = useExperiences({ ...filters, search: debouncedSearch });
 
   const experiences = expData?.pages.flatMap((p) => p!.experiences) ?? [];
 

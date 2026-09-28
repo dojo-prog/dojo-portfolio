@@ -5,6 +5,7 @@ import { useContactMessages } from "@/features/contacts/hooks/useContactMessages
 import Header from "./contact-messages/Header";
 import MessageList from "./contact-messages/MessageList";
 import MessageFilters from "./contact-messages/MessageFilters";
+import { useDebounce } from "@/hooks/useDebounce";
 
 const ContactMessagesPage = () => {
   const [filters, setFilters] = useState<ContactMessageQuery>({
@@ -15,12 +16,14 @@ const ContactMessagesPage = () => {
     unread: false,
   });
 
+  const debouncedSearch = useDebounce(filters.search);
+
   const {
     data: messageData,
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  } = useContactMessages({ ...filters });
+  } = useContactMessages({ ...filters, search: debouncedSearch });
 
   const messages = messageData?.pages.flatMap((p) => p!.messages) ?? [];
 

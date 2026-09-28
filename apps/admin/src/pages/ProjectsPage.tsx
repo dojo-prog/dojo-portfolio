@@ -3,6 +3,7 @@ import Header from "./projects/Header";
 import ProjectList from "./projects/ProjectList";
 import { useState } from "react";
 import type { ProjectQuery } from "@dojo-portfolio/shared";
+import { useDebounce } from "@/hooks/useDebounce";
 
 const ProjectsPage = () => {
   const [filters, setFilters] = useState<ProjectQuery>({
@@ -14,16 +15,18 @@ const ProjectsPage = () => {
     status: undefined,
   });
 
+  const debouncedSearch = useDebounce(filters.search);
+
   const {
     data: projectData,
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  } = useProjects({ ...filters });
+  } = useProjects({ ...filters, search: debouncedSearch });
 
   console.log(projectData);
 
-  const projects = projectData?.pages.flatMap((p) => p?.projects) ?? [];
+  const projects = projectData?.pages.flatMap((p) => p!.projects) ?? [];
 
   return (
     <div className="space-y-8">

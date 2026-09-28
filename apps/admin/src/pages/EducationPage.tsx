@@ -5,6 +5,7 @@ import Empty from "@/components/common/Empty";
 import EducationList from "./education/EducationList";
 import EducationFilters from "./education/EducationFilters";
 import type { EducationQuery } from "@dojo-portfolio/shared";
+import { useDebounce } from "@/hooks/useDebounce";
 
 const EducationPage = () => {
   const [filters, setFilters] = useState<EducationQuery>({
@@ -14,12 +15,14 @@ const EducationPage = () => {
     sort: undefined,
   });
 
+  const debouncedSearch = useDebounce(filters.search);
+
   const {
     data: educationData,
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  } = useEducations({ ...filters });
+  } = useEducations({ ...filters, search: debouncedSearch });
 
   const educations = educationData?.pages.flatMap((p) => p!.educations) ?? [];
 
