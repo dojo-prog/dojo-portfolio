@@ -7,7 +7,7 @@ export default function DashboardPage() {
   const { data: dashboardOverview, isPending } = useDashboardOverview();
 
   return (
-    <main className="space-y-8 p-6">
+    <main className="space-y-8">
       {/* Header */}
       <Header />
 
