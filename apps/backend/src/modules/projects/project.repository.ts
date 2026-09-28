@@ -44,6 +44,17 @@ export const find = async (
   };
 };
 
+export const findAll = async (): Promise<ProjectWithRelations[]> => {
+  const { rows } = await pool.query(
+    `
+    SELECT ${PROJECT_WITH_RELATIONS_PROJECTION}
+    FROM projects p
+    `,
+  );
+
+  return rows;
+};
+
 export const findWithRelationsById = async (
   projectId: string,
 ): Promise<ProjectWithRelations> => {

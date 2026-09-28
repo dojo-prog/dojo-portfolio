@@ -35,6 +35,10 @@ export const getProjects = async (
   };
 };
 
+export const getAllProjects = async (): Promise<ProjectWithRelations[]> => {
+  return projectRepository.findAll();
+};
+
 export const getProjectById = async (
   projectId: string,
 ): Promise<ProjectWithRelations> => {

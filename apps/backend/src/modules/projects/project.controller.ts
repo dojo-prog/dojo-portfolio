@@ -19,6 +19,16 @@ export const getProjects: Controller = async (req, res, next) => {
   }
 };
 
+export const getAllProjects: Controller = async (req, res, next) => {
+  try {
+    const projects = await projectService.getAllProjects();
+
+    res.status(200).json({ success: true, data: { projects } });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getProjectById: Controller = async (req, res, next) => {
   try {
     const project = await projectService.getProjectById(

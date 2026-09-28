@@ -15,6 +15,7 @@ import {
 import {
   createProject,
   deleteProject,
+  getAllProjects,
   getProjectById,
   getProjects,
   updateProject,
@@ -33,6 +34,8 @@ router
     validate({ body: CreateProjectBodySchema }),
     createProject,
   );
+
+router.get("/all", getAllProjects);
 
 router
   .route("/:projectId")
