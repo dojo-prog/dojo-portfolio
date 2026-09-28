@@ -1,6 +1,6 @@
 import type { ProjectQuery } from "@dojo-portfolio/shared";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { fetchProjects } from "../api/projects.api";
+import { fetchProjects } from "../api/project.api";
 
 export const useProjects = (params: ProjectQuery) => {
   return useInfiniteQuery({

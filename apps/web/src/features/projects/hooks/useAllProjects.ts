@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchAllProjects } from "../api/projects.api";
+import { fetchAllProjects } from "../api/project.api";
 
 export const useAllProjects = () => {
   return useQuery({
