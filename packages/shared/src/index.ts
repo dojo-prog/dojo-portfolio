@@ -10,3 +10,4 @@ export * from "./schemas/project_skills";
 export * from "./schemas/education";
 export * from "./schemas/experience";
 export * from "./schemas/contact_message";
+export * from "./schemas/dashboard";
