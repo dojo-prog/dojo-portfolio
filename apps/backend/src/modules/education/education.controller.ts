@@ -19,6 +19,16 @@ export const getEducations: Controller = async (req, res, next) => {
   }
 };
 
+export const getAllEducations: Controller = async (req, res, next) => {
+  try {
+    const educations = await educationService.getAllEducations();
+
+    res.status(200).json({ success: true, data: { educations } });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getEducationById: Controller = async (req, res, next) => {
   try {
     const education = await educationService.getEducationById(

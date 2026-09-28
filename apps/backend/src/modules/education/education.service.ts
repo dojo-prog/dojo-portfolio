@@ -27,6 +27,10 @@ export const getEducations = async (
   };
 };
 
+export const getAllEducations = async (): Promise<EducationEntity[]> => {
+  return educationRepository.findAll();
+};
+
 export const getEducationById = async (
   educationId: string,
 ): Promise<EducationEntity> => {

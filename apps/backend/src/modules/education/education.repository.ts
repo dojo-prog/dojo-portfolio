@@ -41,6 +41,16 @@ export const find = async (
   };
 };
 
+export const findAll = async () => {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM education
+    `,
+  );
+
+  return rows;
+};
+
 export const findById = async (
   educationId: string,
 ): Promise<EducationEntity> => {

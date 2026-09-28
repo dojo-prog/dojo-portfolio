@@ -13,6 +13,7 @@ import {
 import {
   createEducation,
   deleteEducation,
+  getAllEducations,
   getEducationById,
   getEducations,
   updateEducation,
@@ -29,6 +30,8 @@ router
     validate({ body: CreateEducationBodySchema }),
     createEducation,
   );
+
+router.get("/", getAllEducations);
 
 router
   .route("/:educationId")
