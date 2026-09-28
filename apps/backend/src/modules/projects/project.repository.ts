@@ -165,3 +165,28 @@ export const updateSkills = async (
     client.release();
   }
 };
+
+// =======================================
+// Counts
+// =======================================
+
+export const count = async (): Promise<number> => {
+  const { rows } = await pool.query(
+    `
+    SELECT COUNT(*) FROM projects
+    `,
+  );
+
+  return rows[0];
+};
+
+export const countFeatured = async (): Promise<number> => {
+  const { rows } = await pool.query(
+    `
+    SELECT COUNT(*) FROM projects
+    WHERE featured = true
+    `,
+  );
+
+  return rows[0];
+};

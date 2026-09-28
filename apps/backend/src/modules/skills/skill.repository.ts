@@ -9,6 +9,10 @@ import { pool } from "../../infrastructure/database/db";
 import { buildInsertQueryParts } from "../../utils/query-builder/buildInsertQueryParts";
 import { objectKeysToSnakeCase } from "../../utils/camelCastToSnakeCase";
 
+// =======================================
+// Queries
+// =======================================
+
 export const find = async (query: SkillQuery): Promise<SkillEntity[]> => {
   const { whereClause, orderByClause, limitClause, offsetClause, values } =
     buildFilterQueryParts({
@@ -42,6 +46,10 @@ export const findById = async (skillId: string): Promise<SkillEntity> => {
   return rows[0];
 };
 
+// =======================================
+// Mutations
+// =======================================
+
 export const add = async (payload: CreateSkillBody): Promise<SkillEntity> => {
   const { columnsStr, placeholdersStr, values } = buildInsertQueryParts(
     objectKeysToSnakeCase(payload),
@@ -69,6 +77,20 @@ export const remove = async (skillId: string): Promise<SkillEntity> => {
     RETURNING *
     `,
     [skillId],
+  );
+
+  return rows[0];
+};
+
+// =======================================
+// Counts
+// =======================================
+
+export const count = async (): Promise<number> => {
+  const { rows } = await pool.query(
+    `
+    SELECT COUNT(*) FROM skills
+    `,
   );
 
   return rows[0];

@@ -11,6 +11,10 @@ import { objectKeysToSnakeCase } from "../../utils/camelCastToSnakeCase";
 import generateChanges from "../../utils/generateChanges";
 import { buildUpdateQueryParts } from "../../utils/query-builder/buildUpdateQueryParts";
 
+// =======================================
+// Queries
+// =======================================
+
 export const find = async (
   query: ExperienceQuery,
 ): Promise<{ experiences: ExperienceEntity[]; total: number }> => {
@@ -54,6 +58,10 @@ export const findById = async (
 
   return rows[0];
 };
+
+// =======================================
+// Mutations
+// =======================================
 
 export const add = async (
   payload: CreateExperienceBody,
@@ -107,6 +115,20 @@ export const remove = async (
     RETURNING * 
     `,
     [experienceId],
+  );
+
+  return rows[0];
+};
+
+// =======================================
+// Counts
+// =======================================
+
+export const count = async (): Promise<number> => {
+  const { rows } = await pool.query(
+    `
+    SELECT COUNT(*) FROM experience
+    `,
   );
 
   return rows[0];

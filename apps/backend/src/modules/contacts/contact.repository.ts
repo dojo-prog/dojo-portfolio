@@ -3,11 +3,14 @@ import {
   ContactMessageQuery,
   CreateContactMessageBody,
 } from "@dojo-portfolio/shared";
-import { buildFilterQueryParts } from "../../utils/query-builder/buildFilterQueryParts";
 import { pool } from "../../infrastructure/database/db";
 import { buildInsertQueryParts } from "../../utils/query-builder/buildInsertQueryParts";
 import { objectKeysToSnakeCase } from "../../utils/camelCastToSnakeCase";
 import { buildSpecificContactMessageFilter } from "../../utils/query-builder/buildSpecificContactMessageFilters";
+
+// =======================================
+// Queries
+// =======================================
 
 export const find = async (
   query: ContactMessageQuery,
@@ -53,17 +56,9 @@ export const findById = async (
   return rows[0];
 };
 
-export const findUnreadCount = async (): Promise<number> => {
-  const { rows } = await pool.query(
-    `
-    SELECT COUNT(*) AS unread_count 
-    FROM contact_messages
-    WHERE read_at IS NULL
-    `,
-  );
-
-  return rows[0]?.unread_count ?? 0;
-};
+// =======================================
+// Mutations
+// =======================================
 
 export const add = async (
   payload: CreateContactMessageBody,
@@ -112,4 +107,20 @@ export const readMessage = async (
   );
 
   return rows[0];
+};
+
+// =======================================
+// Counts
+// =======================================
+
+export const findUnreadCount = async (): Promise<number> => {
+  const { rows } = await pool.query(
+    `
+    SELECT COUNT(*) AS unread_count 
+    FROM contact_messages
+    WHERE read_at IS NULL
+    `,
+  );
+
+  return rows[0]?.unread_count ?? 0;
 };
