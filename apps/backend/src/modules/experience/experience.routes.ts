@@ -13,6 +13,7 @@ import {
 import {
   createExperience,
   deleteExperience,
+  getAllExperiences,
   getExperienceById,
   getExperiences,
   updateExperience,
@@ -29,6 +30,8 @@ router
     validate({ body: CreateExperienceBodySchema }),
     createExperience,
   );
+
+router.get("/all", getAllExperiences);
 
 router
   .route("/:experienceId")

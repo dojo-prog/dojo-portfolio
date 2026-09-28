@@ -30,6 +30,10 @@ export const getExperiences = async (
   };
 };
 
+export const getAllExperiences = async (): Promise<ExperienceEntity[]> => {
+  return experienceRepository.findAll();
+};
+
 export const getExperienceById = async (
   experienceId: string,
 ): Promise<ExperienceEntity> => {

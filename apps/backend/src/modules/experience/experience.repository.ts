@@ -45,6 +45,16 @@ export const find = async (
   };
 };
 
+export const findAll = async (): Promise<ExperienceEntity[]> => {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM experience
+    `,
+  );
+
+  return rows[0];
+};
+
 export const findById = async (
   experienceId: string,
 ): Promise<ExperienceEntity> => {

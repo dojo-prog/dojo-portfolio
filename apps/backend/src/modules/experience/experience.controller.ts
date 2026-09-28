@@ -19,6 +19,16 @@ export const getExperiences: Controller = async (req, res, next) => {
   }
 };
 
+export const getAllExperiences: Controller = async (req, res, next) => {
+  try {
+    const experiences = await experienceService.getAllExperiences();
+
+    res.status(200).json({ success: true, data: { experiences } });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getExperienceById: Controller = async (req, res, next) => {
   try {
     const experience = await experienceService.getExperienceById(
