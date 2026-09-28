@@ -131,5 +131,5 @@ export const count = async (): Promise<number> => {
     `,
   );
 
-  return rows[0];
+  return rows[0].count;
 };
