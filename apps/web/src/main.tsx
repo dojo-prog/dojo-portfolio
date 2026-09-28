@@ -5,13 +5,17 @@ import { ErrorBoundary } from "./components/feedback/ErrorBoundary.tsx";
 import "./lib/axios/interceptor.ts";
 import "./styles/index.css";
 import App from "./App.tsx";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./lib/tanstack-query/client.ts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ErrorBoundary>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ErrorBoundary>
+    <BrowserRouter>
+      <ErrorBoundary>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </ErrorBoundary>
+    </BrowserRouter>
   </StrictMode>,
 );
