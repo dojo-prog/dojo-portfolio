@@ -1,14 +1,11 @@
 import HeroSection from "./home/HeroSection";
-import Background from "./home/Background";
+import ProjectsSection from "./home/ProjectsSection";
 
 const HomePage = () => {
   return (
     <main>
-      {/* Background */}
-      <Background />
-
-      {/* Hero */}
       <HeroSection />
+      <ProjectsSection />
     </main>
   );
 };
