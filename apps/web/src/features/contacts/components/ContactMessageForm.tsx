@@ -11,10 +11,14 @@ import {
 } from "@dojo-portfolio/shared";
 import { FieldError } from "@/components/ui/field";
 import { useCreateMessage } from "../hooks/useCreateMessage";
-import { toast } from "sonner";
+import ButtonLoader from "@/components/common/ButtonLoader";
 
-const ContactMessageForm = () => {
-  const { mutateAsync: createMessage } = useCreateMessage();
+type Props = {
+  onSuccess: () => void;
+};
+
+const ContactMessageForm = ({ onSuccess }: Props) => {
+  const { mutateAsync: createMessage, isPending } = useCreateMessage();
 
   const form = useForm({
     resolver: zodResolver(CreateContactMessageBodySchema),
@@ -30,7 +34,7 @@ const ContactMessageForm = () => {
   const onSubmit = async (data: CreateContactMessageBody) => {
     await createMessage(data);
 
-    toast.success("Messae sent");
+    onSuccess();
     form.reset();
   };
 
@@ -100,8 +104,10 @@ const ContactMessageForm = () => {
         {/* Submit */}
         <div className="flex justify-end pt-2">
           <Button type="submit" className={"text-white"} size={"lg"}>
-            Send message
-            <ArrowUpRight />
+            <ButtonLoader isLoading={isPending}>
+              Send message
+              <ArrowUpRight />
+            </ButtonLoader>
           </Button>
         </div>
       </div>
