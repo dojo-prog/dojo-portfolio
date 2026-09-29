@@ -1,3 +1,4 @@
+import AnimatedContent from "@/components/AnimatedContent";
 import EducationCard from "@/features/education/components/EducationCard";
 import { useAllEducations } from "@/features/education/hooks/useAllEducations";
 
@@ -24,8 +25,21 @@ const EducationSection = () => {
 
         {educations && educations.length > 0 && (
           <div className="space-y-5">
-            {educations.map((education) => (
-              <EducationCard key={education.id} education={education} />
+            {educations.map((education, index) => (
+              <AnimatedContent
+                key={education.id}
+                distance={12}
+                direction="vertical"
+                duration={0.4}
+                ease="power2.out"
+                initialOpacity={0}
+                animateOpacity
+                scale={1}
+                threshold={0.1}
+                delay={index * 0.05}
+              >
+                <EducationCard key={education.id} education={education} />
+              </AnimatedContent>
             ))}
           </div>
         )}

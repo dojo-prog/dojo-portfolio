@@ -1,3 +1,4 @@
+import AnimatedContent from "@/components/AnimatedContent";
 import GradientWavesBackground from "@/components/common/GradientWavesBackground";
 import ContactInformation from "@/features/contacts/components/ContactInformation";
 import ContactMessageForm from "@/features/contacts/components/ContactMessageForm";
@@ -32,10 +33,22 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Content */}
-          <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-            <ContactInformation />
-            <ContactMessageForm onSuccess={() => setConfirmationOpen(true)} />
-          </div>
+          <AnimatedContent
+            distance={12}
+            direction="vertical"
+            duration={0.4}
+            ease="power2.out"
+            initialOpacity={0}
+            animateOpacity
+            scale={1}
+            threshold={0.1}
+            delay={0.05}
+          >
+            <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+              <ContactInformation />
+              <ContactMessageForm onSuccess={() => setConfirmationOpen(true)} />
+            </div>
+          </AnimatedContent>
         </div>
       </section>
 

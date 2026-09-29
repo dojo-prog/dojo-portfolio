@@ -1,3 +1,4 @@
+import AnimatedContent from "@/components/AnimatedContent";
 import ProjectCard from "@/features/projects/components/ProjectCard";
 import { useAllProjects } from "@/features/projects/hooks/useAllProjects";
 
@@ -23,11 +24,23 @@ const ProjectsSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {projects?.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+      <AnimatedContent
+        distance={20}
+        direction="vertical"
+        duration={0.45}
+        ease="power2.out"
+        initialOpacity={0}
+        animateOpacity
+        scale={1}
+        threshold={0.1}
+        delay={0.2}
+      >
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {projects?.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </AnimatedContent>
     </section>
   );
 };

@@ -1,3 +1,4 @@
+import AnimatedContent from "@/components/AnimatedContent";
 import ExperienceCard from "@/features/experiences/components/ExperienceCard";
 import { useAllExperiences } from "@/features/experiences/hooks/useAllExperiences";
 
@@ -30,7 +31,7 @@ const ExperiencesSection = () => {
             <div className="absolute bottom-0 left-1.75 top-0 w-px bg-border md:left-2.75" />
 
             <div className="space-y-10">
-              {experiences.map((experience) => (
+              {experiences.map((experience, index) => (
                 <div key={experience.id} className="relative pl-8 md:pl-12">
                   {/* Timeline Dot */}
                   <div
@@ -40,7 +41,20 @@ const ExperiencesSection = () => {
                   />
 
                   {/* Experience */}
-                  <ExperienceCard experience={experience} />
+                  <AnimatedContent
+                    key={experience.id}
+                    distance={16}
+                    direction="vertical"
+                    duration={0.45}
+                    ease="power2.out"
+                    initialOpacity={0}
+                    animateOpacity
+                    scale={1}
+                    threshold={0.15}
+                    delay={index * 0.1}
+                  >
+                    <ExperienceCard experience={experience} />
+                  </AnimatedContent>
                 </div>
               ))}
             </div>

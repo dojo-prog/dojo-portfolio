@@ -1,3 +1,4 @@
+import AnimatedContent from "@/components/AnimatedContent";
 import SkillCard from "@/features/skills/components/SkillCard";
 import { useAllSkills } from "@/features/skills/hooks/useAllSkills";
 
@@ -25,7 +26,22 @@ const SkillsSection = () => {
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {skills?.length &&
-          skills.map((skill) => <SkillCard key={skill.id} skill={skill} />)}
+          skills.map((skill, index) => (
+            <AnimatedContent
+              key={skill.id}
+              distance={12}
+              direction="vertical"
+              duration={0.4}
+              ease="power2.out"
+              initialOpacity={0}
+              animateOpacity
+              scale={1}
+              threshold={0.1}
+              delay={index * 0.05}
+            >
+              <SkillCard key={skill.id} skill={skill} />
+            </AnimatedContent>
+          ))}
       </div>
     </section>
   );
