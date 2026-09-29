@@ -1,3 +1,4 @@
+import GradientWavesBackground from "@/components/common/GradientWavesBackground";
 import ContactInformation from "@/features/contacts/components/ContactInformation";
 import ContactMessageForm from "@/features/contacts/components/ContactMessageForm";
 import MessageSentConfirmationDialog from "@/features/contacts/components/MessageSentConfirmationDialog";
@@ -8,8 +9,13 @@ const ContactSection = () => {
 
   return (
     <>
-      <section id="contact" className="h-screen px-6 py-24">
-        <div className="mx-auto">
+      <section id="contact" className="relative h-screen px-6 py-24">
+        {/* Background */}
+        <div className="absolute inset-0 z-0">
+          <GradientWavesBackground />
+        </div>
+
+        <div className="mx-auto max-w-7xl">
           {/* Section Header */}
           <div className="mb-12 max-w-2xl">
             <p className="mb-3 text-sm font-medium uppercase tracking-wider text-muted-foreground">

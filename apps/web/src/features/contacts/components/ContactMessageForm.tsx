@@ -41,7 +41,7 @@ const ContactMessageForm = ({ onSuccess }: Props) => {
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
-      className="rounded-xl border bg-card p-6 sm:p-8"
+      className="rounded-xl border bg-card p-6 sm:p-8 z-50"
     >
       <h3 className="text-2xl font-semibold mb-4">Send me a message</h3>
 

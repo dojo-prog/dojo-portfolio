@@ -2,7 +2,7 @@ import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 
 const ContactInformation = () => {
   return (
-    <div className="rounded-xl border bg-card p-6 sm:p-8">
+    <div className="rounded-xl border bg-card p-6 sm:p-8 z-50">
       <h3 className="text-2xl font-semibold">Get in touch</h3>
 
       <p className="mt-3 max-w-sm text-sm leading-6 text-muted-foreground">
