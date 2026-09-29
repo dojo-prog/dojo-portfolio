@@ -1,3 +1,4 @@
+import EducationSection from "./EducationSection";
 import ContactSection from "./home/ContactSection";
 import ExperiencesSection from "./home/ExperiencesSection";
 import HeroSection from "./home/HeroSection";
@@ -11,6 +12,7 @@ const HomePage = () => {
       <ProjectsSection />
       <SkillsSection />
       <ExperiencesSection />
+      <EducationSection />
       <ContactSection />
     </main>
   );
