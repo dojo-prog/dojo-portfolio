@@ -1,10 +1,14 @@
+import Navbar from "@/components/layout/Navbar";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
   return (
-    <div>
-      MainLayout
-      <Outlet />
+    <div className="min-h-screen bg-background">
+      <Navbar />
+
+      <div>
+        <Outlet />
+      </div>
     </div>
   );
 };
