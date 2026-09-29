@@ -42,7 +42,7 @@ export const findAll = async (): Promise<SkillEntity[]> => {
     `,
   );
 
-  return rows[0];
+  return rows;
 };
 
 export const findById = async (skillId: string): Promise<SkillEntity> => {
