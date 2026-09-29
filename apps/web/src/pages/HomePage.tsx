@@ -1,5 +1,16 @@
+import HeroSection from "./home/HeroSection";
+import Background from "./home/Background";
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <main>
+      {/* Background */}
+      <Background />
+
+      {/* Hero */}
+      <HeroSection />
+    </main>
+  );
 };
 
 export default HomePage;
