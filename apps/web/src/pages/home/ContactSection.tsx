@@ -17,12 +17,12 @@ const ContactSection = () => {
 
         <div className="mx-auto max-w-7xl">
           {/* Section Header */}
-          <div className="mb-12 max-w-2xl">
+          <div className="mb-14 max-w-2xl">
             <p className="mb-3 text-sm font-medium uppercase tracking-wider text-muted-foreground">
               Contact
             </p>
 
-            <h2 className="text-5xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-5xl font-bold tracking-tight sm:text-5xl">
               Let's work together.
             </h2>
 

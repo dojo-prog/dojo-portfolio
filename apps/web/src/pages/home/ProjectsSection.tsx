@@ -9,7 +9,19 @@ const ProjectsSection = () => {
       id="projects"
       className="mx-auto min-h-screen w-full max-w-7xl px-6 py-24"
     >
-      <h2 className="mb-8 text-5xl font-bold">Projects</h2>
+      {/* Section Header */}
+      <div className="mb-14 max-w-2xl">
+        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-muted-foreground">
+          Projects
+        </p>
+
+        <h2 className="text-5xl font-bold tracking-tight">What I've built.</h2>
+
+        <p className="mt-4 leading-7 text-muted-foreground">
+          A selection of projects where I've applied what I've learned to build
+          practical software.
+        </p>
+      </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {projects?.map((project) => (
