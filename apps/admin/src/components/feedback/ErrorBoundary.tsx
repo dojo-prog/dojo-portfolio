@@ -1,4 +1,5 @@
 import React from "react";
+import ErrorBoundaryUI from "./ErrorBoundaryUI";
 
 type Props = {
   children: React.ReactNode;
@@ -36,10 +37,11 @@ export class ErrorBoundary extends React.Component<Props, State> {
     });
   };
 
-  // TODO create ErrorBoundary UI
   render() {
     if (this.state.hasError) {
-      return <p>Something went wrong</p>;
+      return (
+        <ErrorBoundaryUI error={this.state.error} onRetry={this.handleRetry} />
+      );
     }
 
     return this.props.children;
