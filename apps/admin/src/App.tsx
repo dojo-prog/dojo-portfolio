@@ -13,6 +13,7 @@ import ScrollToTop from "./components/common/ScrollToTop";
 import AddProjectPage from "./pages/AddProjectPage";
 import { useCurrentUser } from "./features/auth/hooks/useCurrentUser";
 import UpdateProjectPage from "./pages/UpdateProjectPage";
+import NotFoundPage from "./components/feedback/NotFoundPage";
 
 const App = () => {
   const { data: user, isPending } = useCurrentUser();
@@ -48,6 +49,8 @@ const App = () => {
           <Route path="education" element={<EducationPage />} />
           <Route path="contact/messages" element={<ContactMessagesPage />} />
         </Route>
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       <Toaster />
