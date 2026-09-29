@@ -7,7 +7,7 @@ import type {
 } from "../types/experience.types";
 
 export const fetchExperiences = async (params: ExperienceQuery) => {
-  const { data } = await api.get<FetchExperiencesRes>("/v1/experiences", {
+  const { data } = await api.get<FetchExperiencesRes>("/v1/experience", {
     params,
   });
 
@@ -15,14 +15,14 @@ export const fetchExperiences = async (params: ExperienceQuery) => {
 };
 
 export const fetchAllExperiences = async () => {
-  const { data } = await api.get<FetchAllExperiencesRes>("/v1/experiences/all");
+  const { data } = await api.get<FetchAllExperiencesRes>("/v1/experience/all");
 
   return data;
 };
 
 export const fetchExperience = async (experienceId: string) => {
   const { data } = await api.get<FetchExperienceRes>(
-    `/v1/experiences/${experienceId}`,
+    `/v1/experience/${experienceId}`,
   );
 
   return data;
