@@ -27,7 +27,7 @@ const connLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-primary/20 border-t">
+    <footer className="bg-primary/10 border-t">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-10 py-12 sm:flex-row sm:items-start sm:justify-between">
           {/* Identity */}
