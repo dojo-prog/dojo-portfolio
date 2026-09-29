@@ -52,7 +52,7 @@ export const findAll = async (): Promise<ExperienceEntity[]> => {
     `,
   );
 
-  return rows[0];
+  return rows;
 };
 
 export const findById = async (
