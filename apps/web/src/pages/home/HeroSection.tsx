@@ -1,7 +1,7 @@
 import { useTheme } from "@/app/providers/ThemeProvider";
 import AnimatedContent from "@/components/AnimatedContent";
 import ProfileCard from "@/components/ProfileCard";
-import Background from "./Background";
+import AuroraBackground from "@/components/common/AuroraBackground";
 
 const HeroSection = () => {
   const { theme } = useTheme();
@@ -9,9 +9,15 @@ const HeroSection = () => {
 
   return (
     <>
-      <Background />
+      <section
+        id="home"
+        className="relative flex min-h-screen w-full items-center overflow-hidden"
+      >
+        {/* Background */}
+        <div className="absolute inset-0 z-0">
+          <AuroraBackground />
+        </div>
 
-      <section className="flex min-h-screen w-full items-center overflow-hidden">
         {/* Hero */}
         <div className="mx-auto w-full max-w-7xl px-6 lg:px-8 z-10">
           <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-20">
