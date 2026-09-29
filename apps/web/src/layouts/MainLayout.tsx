@@ -6,7 +6,7 @@ const MainLayout = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="mx-auto w-full max-w-7xl">
+      <main className="mx-auto w-full">
         <Outlet />
       </main>
     </div>
