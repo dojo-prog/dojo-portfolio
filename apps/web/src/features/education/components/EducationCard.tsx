@@ -7,10 +7,10 @@ type Props = {
 
 const EducationCard = ({ education }: Props) => {
   return (
-    <article className="border-b py-6 first:pt-0 last:border-b-0">
+    <article className="border-b py-6 first:pt-0 last:border-b-0 hover:border-primary transition-colors duration-150 group">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold tracking-tight">
+          <h2 className="text-lg font-semibold tracking-tight group-hover:text-primary transition-colors duration-150">
             {education.degree}
           </h2>
 
@@ -23,7 +23,7 @@ const EducationCard = ({ education }: Props) => {
 
         <p className="shrink-0 text-sm text-muted-foreground">
           {education.start_date ? formatDate(education.start_date) : "Unknown"}{" "}
-          — {education.end_date ? formatDate(education.end_date) : "Present"}
+          {education.end_date ? `— ${formatDate(education.end_date)}` : ""}
         </p>
       </div>
 
