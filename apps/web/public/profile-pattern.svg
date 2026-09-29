@@ -1,0 +1,120 @@
+<svg
+  width="160"
+  height="160"
+  viewBox="0 0 160 160"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <pattern
+      id="code-pattern"
+      width="80"
+      height="80"
+      patternUnits="userSpaceOnUse"
+    >
+      <!-- Grid -->
+      <path
+        d="M0 40H80M40 0V80"
+        stroke="#60A5FA"
+        stroke-width="0.8"
+        stroke-opacity="0.2"
+      />
+
+      <!-- Code brackets -->
+      <path
+        d="M12 17L7 22L12 27"
+        fill="none"
+        stroke="#BFDBFE"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-opacity="0.55"
+      />
+
+      <path
+        d="M20 17L25 22L20 27"
+        fill="none"
+        stroke="#BFDBFE"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-opacity="0.55"
+      />
+
+      <!-- Connection -->
+      <path
+        d="M52 14L65 14L65 27"
+        fill="none"
+        stroke="#60A5FA"
+        stroke-width="1.2"
+        stroke-opacity="0.35"
+      />
+
+      <circle
+        cx="52"
+        cy="14"
+        r="2.2"
+        fill="#93C5FD"
+        fill-opacity="0.55"
+      />
+
+      <!-- Center node -->
+      <circle
+        cx="40"
+        cy="40"
+        r="2.5"
+        fill="#BFDBFE"
+        fill-opacity="0.6"
+      />
+
+      <circle
+        cx="40"
+        cy="40"
+        r="7"
+        fill="none"
+        stroke="#60A5FA"
+        stroke-width="0.9"
+        stroke-opacity="0.2"
+      />
+
+      <!-- Bottom-right brackets -->
+      <path
+        d="M55 54L50 59L55 64"
+        fill="none"
+        stroke="#BFDBFE"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-opacity="0.45"
+      />
+
+      <path
+        d="M63 54L68 59L63 64"
+        fill="none"
+        stroke="#BFDBFE"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-opacity="0.45"
+      />
+
+      <!-- Dots -->
+      <circle
+        cx="14"
+        cy="61"
+        r="1.8"
+        fill="#60A5FA"
+        fill-opacity="0.45"
+      />
+
+      <circle
+        cx="25"
+        cy="61"
+        r="1.2"
+        fill="#60A5FA"
+        fill-opacity="0.35"
+      />
+    </pattern>
+  </defs>
+
+  <rect width="160" height="160" fill="url(#code-pattern)" />
+</svg>

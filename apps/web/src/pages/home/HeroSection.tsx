@@ -93,7 +93,7 @@ const HeroSection = () => {
 
             {/* Right — Profile Card */}
             <div className="flex justify-center md:justify-end">
-              <div className="w-full max-w-95">
+              <div className="w-full max-w-95 h-fit">
                 <AnimatedContent
                   distance={100}
                   direction="vertical"
@@ -111,19 +111,18 @@ const HeroSection = () => {
                     title=""
                     handle="javicodes"
                     status="Online"
-                    avatarUrl="/path/to/avatar.jpg"
+                    avatarUrl="/images/profile-card.jpg"
                     showUserInfo={false}
                     enableTilt={true}
                     enableMobileTilt={false}
-                    onContactClick={() => console.log("Contact clicked")}
                     behindGlowColor="rgba(125, 190, 255, 0.67)"
-                    iconUrl="/assets/demo/iconpattern.png"
+                    iconUrl="/profile-pattern.svg"
                     behindGlowEnabled
                     behindGlowSize="80%"
                     innerGradient={
                       isDark
-                        ? "linear-gradient(145deg, #172554CC 0%, #1E3A8A88 100%)"
-                        : "linear-gradient(145deg, #DBEAFECC 0%, #BFDBFE88 100%)"
+                        ? "linear-gradient(145deg, #1E3A8A99 0%, #2563EB55 100%)"
+                        : "linear-gradient(145deg, #EFF6FFCC 0%, #DBEAFE66 100%)"
                     }
                   />
                 </AnimatedContent>
