@@ -31,7 +31,7 @@ router
     createEducation,
   );
 
-router.get("/", getAllEducations);
+router.get("/all", getAllEducations);
 
 router
   .route("/:educationId")
