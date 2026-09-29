@@ -9,7 +9,7 @@ const navItems = [
 
 const Navbar = () => {
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
+    <nav className="fixed inset-x-0 top-0 z-100 flex justify-center px-4 pt-4">
       <div
         className="
           flex h-14 w-full max-w-4xl items-center
