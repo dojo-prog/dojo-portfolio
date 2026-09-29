@@ -1,6 +1,8 @@
 import { useTheme } from "@/app/providers/ThemeProvider";
 import AnimatedContent from "@/components/AnimatedContent";
+import BlurText from "@/components/BlurText";
 import ProfileCard from "@/components/ProfileCard";
+import TextType from "@/components/TextType";
 import AuroraBackground from "@/components/common/AuroraBackground";
 
 const HeroSection = () => {
@@ -23,15 +25,23 @@ const HeroSection = () => {
           <div className="grid items-center gap-12 md:grid-cols-2 lg:gap-20">
             {/* Left — Hero Content */}
             <div className="max-w-2xl">
-              <p className="mb-5 text-sm font-medium uppercase tracking-[0.2em] text-primary">
-                Software Engineer
-              </p>
+              <TextType
+                text={[
+                  "Software Engineer.",
+                  "APIs. Databases. Systems.",
+                  "From request to response.",
+                  "Understanding software from the inside out.",
+                ]}
+                className="mb-5 text-sm font-bold uppercase tracking-[0.2em] text-primary"
+              />
 
-              <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                Building things
-                <br />
-                <span className="text-primary">for the web.</span>
-              </h1>
+              <BlurText
+                text="Building things for the web."
+                delay={200}
+                animateBy="words"
+                direction="top"
+                className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+              />
 
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
                 I’m Donald, a software engineer focused on building reliable,
@@ -39,19 +49,45 @@ const HeroSection = () => {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href="#projects"
-                  className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-105"
+                <AnimatedContent
+                  distance={100}
+                  direction="vertical"
+                  reverse={false}
+                  duration={0.8}
+                  ease="power3.out"
+                  initialOpacity={0}
+                  animateOpacity
+                  scale={1}
+                  threshold={0.1}
+                  delay={0.2}
                 >
-                  View my work
-                </a>
+                  <a
+                    href="#projects"
+                    className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-105"
+                  >
+                    View my work
+                  </a>
+                </AnimatedContent>
 
-                <a
-                  href="#contact"
-                  className="rounded-full border border-border bg-background/60 px-6 py-3 text-sm font-medium text-foreground backdrop-blur transition-colors hover:bg-muted"
+                <AnimatedContent
+                  distance={100}
+                  direction="vertical"
+                  reverse={false}
+                  duration={0.8}
+                  ease="power3.out"
+                  initialOpacity={0}
+                  animateOpacity
+                  scale={1}
+                  threshold={0.1}
+                  delay={0.5}
                 >
-                  Contact me
-                </a>
+                  <a
+                    href="#contact"
+                    className="rounded-full border border-border bg-background/60 px-6 py-3 text-sm font-medium text-foreground backdrop-blur transition-colors hover:bg-muted"
+                  >
+                    Contact me
+                  </a>
+                </AnimatedContent>
               </div>
             </div>
 
