@@ -88,7 +88,7 @@ export const updateProjectSkills: Controller = async (req, res, next) => {
   try {
     const project = await projectService.updateProjectSkills({
       projectId: req.params.projectId as string,
-      skillIds: req.body.skillsIds,
+      skillIds: req.body.skillIds,
     });
 
     res.status(200).json({ success: true, data: { project } });
