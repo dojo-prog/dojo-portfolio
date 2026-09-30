@@ -81,7 +81,7 @@ export const updateProjectSkills = async (
   body: UpdateProjectSkillsBody,
 ) => {
   const { data } = await api.put<UpdateProjectSkillsRes>(
-    `/v1/projects/${projectId}`,
+    `/v1/projects/${projectId}/skills`,
     body,
   );
 
