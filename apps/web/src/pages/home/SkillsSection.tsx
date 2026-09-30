@@ -16,7 +16,7 @@ const SkillsSection = () => {
           Skills
         </p>
 
-        <h2 className="text-4xl font-bold tracking-tight">What I work with.</h2>
+        <h2 className="text-5xl font-bold tracking-tight">What I work with.</h2>
 
         <p className="mt-4 leading-7 text-muted-foreground">
           The languages, frameworks, tools, and technologies I use to build
