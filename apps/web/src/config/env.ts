@@ -12,4 +12,5 @@ export const env = {
   appName: getReqEnv("VITE_APP_NAME"),
   environment: getReqEnv("VITE_ENVIRONMENT"),
   apiUrl: getReqEnv("VITE_API_URL"),
+  devApiUrl: getReqEnv("VITE_DEV_API_URL"),
 } as const;
