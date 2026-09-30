@@ -4,9 +4,11 @@ import { ENV } from "../../config/env";
 types.setTypeParser(1082, (value) => value);
 
 export const pool = new Pool({
-  host: ENV.DATABASE_HOST,
-  port: ENV.DATABASE_PORT,
-  database: ENV.DATABASE_NAME,
-  user: ENV.DATABASE_USER,
-  password: ENV.DATABASE_PASSWORD,
+  // host: ENV.DATABASE_HOST,
+  // port: ENV.DATABASE_PORT,
+  // database: ENV.DATABASE_NAME,
+  // user: ENV.DATABASE_USER,
+  // password: ENV.DATABASE_PASSWORD,
+
+  connectionString: ENV.DATABASE_URL,
 });
