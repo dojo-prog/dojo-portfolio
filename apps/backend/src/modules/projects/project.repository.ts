@@ -150,7 +150,7 @@ export const updateSkills = async (
 
     await client.query(
       `
-      DELETE FROM project_skill 
+      DELETE FROM project_skills 
       WHERE project_id = $1
       `,
       [projectId],
