@@ -7,7 +7,7 @@ type Props = {
 
 const EducationCard = ({ education }: Props) => {
   return (
-    <article className="border-b py-6 first:pt-0 last:border-b-0 hover:border-primary transition-colors duration-150 group">
+    <article className="border-b py-6 first:pt-0 hover:border-primary transition-colors duration-150 group">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 className="text-lg font-semibold tracking-tight group-hover:text-primary transition-colors duration-150">
