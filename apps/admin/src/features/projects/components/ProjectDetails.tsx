@@ -2,8 +2,7 @@ import { Button } from "@/components/ui/button";
 import { DialogTitle } from "@/components/ui/dialog";
 import { formatDate } from "@/utils/formatDate";
 import type { ProjectWithRelations } from "@dojo-portfolio/shared";
-import { cn } from "cn";
-import { ExternalLink, FolderGit2, Pen, Trash2 } from "lucide-react";
+import { Cog, ExternalLink, FolderGit2, Pen, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DeleteProjectDialog from "./DeleteProjectDialog";
@@ -42,7 +41,8 @@ const ProjectDetails = ({ project }: Props) => {
         <div className="space-y-8 p-6">
           {/* Header */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              {/* Status / Featured */}
               <div className="flex flex-wrap items-center gap-2">
                 <span className="rounded-full bg-muted px-2.5 py-1 text-xs font-medium capitalize">
                   {project.status}
@@ -55,9 +55,10 @@ const ProjectDetails = ({ project }: Props) => {
                 )}
               </div>
 
-              <div className="space-x-4">
+              {/* Actions */}
+              <div className="flex flex-wrap justify-end gap-2">
                 <Button
-                  className={cn("text-white px-6")}
+                  className="px-6 text-white"
                   onClick={() => navigate(`/projects/${project.id}/edit`)}
                 >
                   <Pen className="mr-1 size-4" />
@@ -65,8 +66,17 @@ const ProjectDetails = ({ project }: Props) => {
                 </Button>
 
                 <Button
-                  variant={"destructive"}
-                  className={cn("px-6")}
+                  variant="secondary"
+                  className="px-6 text-white"
+                  onClick={() => navigate(`/projects/${project.id}/skills/set`)}
+                >
+                  <Cog className="mr-1 size-4" />
+                  Set Skills
+                </Button>
+
+                <Button
+                  variant="destructive"
+                  className="px-6"
                   onClick={() => setDeletingProject(true)}
                 >
                   <Trash2 className="mr-1 size-4" />

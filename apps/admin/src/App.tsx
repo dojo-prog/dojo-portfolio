@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Toaster } from "sonner";
+import { useCurrentUser } from "./features/auth/hooks/useCurrentUser";
 
 import LoginPage from "./pages/LoginPage";
 import AdminLayout from "./layouts/AdminLayout";
@@ -11,9 +12,9 @@ import EducationPage from "./pages/EducationPage";
 import ContactMessagesPage from "./pages/ContactMessagesPage";
 import ScrollToTop from "./components/common/ScrollToTop";
 import AddProjectPage from "./pages/AddProjectPage";
-import { useCurrentUser } from "./features/auth/hooks/useCurrentUser";
 import UpdateProjectPage from "./pages/UpdateProjectPage";
 import NotFoundPage from "./components/feedback/NotFoundPage";
+import SetSkillsPage from "./pages/SetSkillsPage";
 
 const App = () => {
   const { data: user, isPending } = useCurrentUser();
@@ -42,6 +43,10 @@ const App = () => {
           <Route
             path="projects/:projectId/edit"
             element={<UpdateProjectPage />}
+          />
+          <Route
+            path="projects/:projectId/skills/set"
+            element={<SetSkillsPage />}
           />
 
           <Route path="skills" element={<SkillsPage />} />
