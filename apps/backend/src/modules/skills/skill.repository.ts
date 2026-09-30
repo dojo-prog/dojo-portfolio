@@ -38,7 +38,7 @@ export const findAll = async (): Promise<SkillEntity[]> => {
   const { rows } = await pool.query(
     `
     SELECT * FROM skills
-    
+    ORDER BY name ASC
     `,
   );
 

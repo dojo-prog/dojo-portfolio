@@ -49,6 +49,9 @@ export const findAll = async (): Promise<ExperienceEntity[]> => {
   const { rows } = await pool.query(
     `
     SELECT * FROM experience
+    ORDER BY 
+      end_date IS NULL, 
+      end_date DESC
     `,
   );
 

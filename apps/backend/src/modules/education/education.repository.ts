@@ -45,6 +45,9 @@ export const findAll = async () => {
   const { rows } = await pool.query(
     `
     SELECT * FROM education
+    ORDER BY 
+      end_date IS NULL, 
+      end_date DESC
     `,
   );
 

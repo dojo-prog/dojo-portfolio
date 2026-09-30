@@ -49,6 +49,10 @@ export const findAll = async (): Promise<ProjectWithRelations[]> => {
     `
     SELECT ${PROJECT_WITH_RELATIONS_PROJECTION}
     FROM projects p
+    ORDER BY 
+      featured DESC, 
+      start_date IS NULL, 
+      start_date DESC 
     `,
   );
 
