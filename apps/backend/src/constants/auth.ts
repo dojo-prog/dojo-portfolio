@@ -16,5 +16,5 @@ export const AUTH_TOKENS = {
 export const BASE_COOKIE_OPTIONS = {
   httpOnly: true,
   secure: ENV.NODE_ENV === "production",
-  sameSite: "strict",
+  sameSite: "none",
 } as const;
