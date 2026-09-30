@@ -10,7 +10,14 @@ import jwt from "jsonwebtoken";
 export const protectRoute: Middleware = async (req, res, next) => {
   const accessToken = req.cookies[AUTH_TOKENS.ACCESS_TOKEN.name];
 
+  console.log("AUTH DEBUG:", {
+    cookieName: AUTH_TOKENS.ACCESS_TOKEN.name,
+    hasAccessToken: !!accessToken,
+    cookies: Object.keys(req.cookies),
+  });
+
   if (!accessToken) {
+    console.log("AUTH FAILED: no access token");
     return next(new AppError(401, "Unauthorized"));
   }
 
@@ -21,7 +28,12 @@ export const protectRoute: Middleware = async (req, res, next) => {
       accessToken,
       ENV.ACCESS_TOKEN_SECRET,
     ) as AccessTokenPayload;
+
+    console.log("JWT VERIFIED:", {
+      id: decoded.id,
+    });
   } catch (error) {
+    console.error("JWT VERIFY FAILED:", error);
     return next(new AppError(401, "Unauthorized"));
   }
 
@@ -36,7 +48,13 @@ export const protectRoute: Middleware = async (req, res, next) => {
 
   const user = rows[0];
 
+  console.log("USER LOOKUP:", {
+    id: decoded.id,
+    found: !!user,
+  });
+
   if (!user) {
+    console.log("AUTH FAILED: user not found");
     return next(new AppError(401, "Unauthorized"));
   }
 
