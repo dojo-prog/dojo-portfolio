@@ -6,7 +6,7 @@ const EducationSection = () => {
   const { data: educations } = useAllEducations();
 
   return (
-    <section id="education" className="min-h-screen py-24">
+    <section id="education" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14 max-w-2xl">
           <p className="mb-3 text-sm font-medium uppercase tracking-wider text-muted-foreground">

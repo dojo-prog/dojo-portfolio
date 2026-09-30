@@ -6,7 +6,7 @@ const ExperiencesSection = () => {
   const { data: experiences } = useAllExperiences();
 
   return (
-    <section id="experience" className="min-h-screen py-24">
+    <section id="experience" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         {/* Section Header */}
         <div className="mb-14 max-w-2xl">
