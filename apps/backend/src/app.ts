@@ -17,7 +17,11 @@ import healthRouter from "./modules/health/health.routes";
 const app = express();
 
 // Cors Config
-const allowedOrigins = [ENV.CLIENT_URL, ENV.ADMIN_CLIENT_URL];
+const allowedOrigins = [
+  ENV.CLIENT_URL,
+  ENV.DEV_CLIENT_URL,
+  ENV.DEV_ADMIN_CLIENT_URL,
+];
 
 app.use(
   cors({
