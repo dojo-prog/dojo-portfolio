@@ -51,6 +51,7 @@ export const findAll = async (): Promise<ProjectWithRelations[]> => {
     FROM projects p
     ORDER BY 
       featured DESC, 
+      live_url IS NULL,
       start_date IS NULL, 
       start_date DESC 
     `,
