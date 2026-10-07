@@ -1,9 +1,28 @@
 import AnimatedContent from "@/components/AnimatedContent";
+import RenderLoadingTypeText from "@/components/common/RenderLoadingTypeText";
 import ProjectCard from "@/features/projects/components/ProjectCard";
+import ProjectCardSkeleton from "@/features/projects/components/ProjectCardSkeleton";
 import { useAllProjects } from "@/features/projects/hooks/useAllProjects";
+import { useEffect, useState } from "react";
 
 const ProjectsSection = () => {
-  const { data: projects } = useAllProjects();
+  const { data: projects, isPending } = useAllProjects();
+
+  const [showSlowMessage, setShowSlowMessage] = useState(false);
+
+  // Set setShowSlowMessage to true aft 5 seconds
+  useEffect(() => {
+    if (!isPending) {
+      setShowSlowMessage(false);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setShowSlowMessage(true);
+    }, 5000);
+
+    return () => clearTimeout(timeout);
+  }, [isPending]);
 
   return (
     <section
@@ -35,10 +54,20 @@ const ProjectsSection = () => {
         threshold={0.1}
         delay={0.2}
       >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 4xl:grid-cols-4">
-          {projects?.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+        <div className="relative grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 4xl:grid-cols-4">
+          {isPending ? (
+            <>
+              {Array.from({ length: 3 }).map((_, index) => (
+                <ProjectCardSkeleton key={index} />
+              ))}
+
+              {showSlowMessage && <RenderLoadingTypeText />}
+            </>
+          ) : (
+            projects?.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))
+          )}
         </div>
       </AnimatedContent>
     </section>
