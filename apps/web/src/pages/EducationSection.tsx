@@ -1,9 +1,10 @@
 import AnimatedContent from "@/components/AnimatedContent";
 import EducationCard from "@/features/education/components/EducationCard";
+import EducationSkeletonCard from "@/features/education/components/EducationSkeletionCard";
 import { useAllEducations } from "@/features/education/hooks/useAllEducations";
 
 const EducationSection = () => {
-  const { data: educations } = useAllEducations();
+  const { data: educations, isPending } = useAllEducations();
 
   return (
     <section id="education" className="py-24">
@@ -25,22 +26,26 @@ const EducationSection = () => {
 
         {educations && educations.length > 0 && (
           <div className="space-y-5">
-            {educations.map((education, index) => (
-              <AnimatedContent
-                key={education.id}
-                distance={12}
-                direction="vertical"
-                duration={0.4}
-                ease="power2.out"
-                initialOpacity={0}
-                animateOpacity
-                scale={1}
-                threshold={0.1}
-                delay={index * 0.05}
-              >
-                <EducationCard key={education.id} education={education} />
-              </AnimatedContent>
-            ))}
+            {isPending ? (
+              <EducationSkeletonCard />
+            ) : (
+              educations?.map((education, index) => (
+                <AnimatedContent
+                  key={education.id}
+                  distance={12}
+                  direction="vertical"
+                  duration={0.4}
+                  ease="power2.out"
+                  initialOpacity={0}
+                  animateOpacity
+                  scale={1}
+                  threshold={0.1}
+                  delay={index * 0.05}
+                >
+                  <EducationCard key={education.id} education={education} />
+                </AnimatedContent>
+              ))
+            )}
           </div>
         )}
       </div>
