@@ -47,13 +47,18 @@ const ENV = {
   DEV_CLIENT_URL: getReqEnv("DEV_CLIENT_URL"),
   DEV_ADMIN_CLIENT_URL: getReqEnv("DEV_ADMIN_CLIENT_URL"),
 
-  // DATABASE_HOST: getReqEnv("DATABASE_HOST"),
-  // DATABASE_PORT: getReqEnvNum("DATABASE_PORT"),
-  // DATABASE_NAME: getReqEnv("DATABASE_NAME"),
-  // DATABASE_USER: getReqEnv("DATABASE_USER"),
-  // DATABASE_PASSWORD: getReqEnv("DATABASE_PASSWORD"),
-
-  DATABASE_URL: getReqEnv("DATABASE_URL"),
+  DATABASE:
+    process.env.NODE_ENV === "production"
+      ? {
+          connectionStr: getReqEnv("DATABASE_URL"),
+        }
+      : {
+          host: getReqEnv("DATABASE_HOST"),
+          port: getReqEnvNum("DATABASE_PORT"),
+          database: getReqEnv("DATABASE_NAME"),
+          user: getReqEnv("DATABASE_USER"),
+          password: getReqEnv("DATABASE_PASSWORD"),
+        },
 
   ACCESS_TOKEN_SECRET: getReqEnv("ACCESS_TOKEN_SECRET"),
   REFRESH_TOKEN_SECRET: getReqEnv("REFRESH_TOKEN_SECRET"),
