@@ -50,7 +50,7 @@ const ENV = {
   DATABASE:
     process.env.NODE_ENV === "production"
       ? {
-          connectionStr: getReqEnv("DATABASE_URL"),
+          connectionString: getReqEnv("DATABASE_URL"),
         }
       : {
           host: getReqEnv("DATABASE_HOST"),
